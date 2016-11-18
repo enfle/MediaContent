@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+    <item
+        android:id="@+id/action_now"
+        android:enabled="true"
+        android:icon="@drawable/ic_play_circle_filled_white_24dp"
+        android:title="@string/now_playing"/>
+
+    <item
+        android:id="@+id/action_movies"
+        android:enabled="true"
+        android:icon="@drawable/ic_video_movie"
+        android:title="@string/text_movies"/>
+
+    <item
+        android:id="@+id/action_tv"
+        android:enabled="true"
+        android:icon="@drawable/ic_tv_serial_icon"
+        android:title="@string/text_schedules"/>
+
+    <item
+        android:id="@+id/action_favorite"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/favorite"/>
+</menu>
