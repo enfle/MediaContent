@@ -1,30 +1,30 @@
 package com.km2labs.mediacontent.common.movie.detail;
 
-import com.km2labs.mediacontent.common.cache.DataCache;
+import com.km2labs.framework.cache.DataCache;
+import com.km2labs.framework.network.BaseNetworkPresenter;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Movie;
 import com.km2labs.mediacontent.common.movie.bean.MovieListResponseDto;
 import com.km2labs.mediacontent.common.movie.list.MovieGridViewItem;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
-import com.km2labs.mediacontent.common.ui.mvp.NetworkPresenter;
 import com.km2labs.mediacontent.common.utils.CollectionUtils;
-import com.km2labs.mediacontent.common.utils.RxUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
-import rx.Subscription;
 
 /**
  * Created by : Subham Tyagi
  * Created on :  05/10/16.
  */
 
-public class SimilarMoviePresenter extends NetworkPresenter<SimilarMovieContract.View>
+public class SimilarMoviePresenter extends BaseNetworkPresenter<SimilarMovieContract.View>
         implements SimilarMovieContract.Presenter {
 
     private MovieService mMovieService;
+
+    private int mMovieId;
 
     public SimilarMoviePresenter(MovieService movieService, DataCache dataCache) {
         super(dataCache);
@@ -32,17 +32,8 @@ public class SimilarMoviePresenter extends NetworkPresenter<SimilarMovieContract
     }
 
     @Override
-    protected void handleError(Throwable throwable) {
-
-    }
-
-    @Override
     public void getSimilarMovies(Integer movieId) {
-        Subscription subscription = mMovieService.getSimilarMovies(movieId).flatMap(this::getViewItemObservable)
-                .compose(RxUtils.applyMainIOSchedulers())
-                .subscribe(this::onRequestCompleted, this::onError);
-
-        addToSubscription(subscription);
+        mMovieId = movieId;
     }
 
     private Observable<List<RecyclerItemView>> getViewItemObservable(MovieListResponseDto moviesListResponseData) {
@@ -56,12 +47,35 @@ public class SimilarMoviePresenter extends NetworkPresenter<SimilarMovieContract
         return Observable.just(itemViews);
     }
 
-    private void onRequestCompleted(List<RecyclerItemView> recyclerItemViews) {
+
+    @Override
+    protected <D> Observable<?> transformResponseData(D data) {
+        return getViewItemObservable((MovieListResponseDto) data);
+    }
+
+    @Override
+    protected <D> void onRequestComplete(D data, String tag) {
+        List<RecyclerItemView> recyclerItemViews = (List<RecyclerItemView>) data;
         getView().onLoadingComplete(true);
         if (CollectionUtils.isEmpty(recyclerItemViews)) {
             getView().showEmptyScreen();
             return;
         }
         getView().showMovieList(recyclerItemViews);
+    }
+
+    @Override
+    protected <D> Boolean isCachedDataValid(D data) {
+        return false;
+    }
+
+    @Override
+    protected Observable<?> getApiObservable(String tag) {
+        return mMovieService.getSimilarMovies(mMovieId);
+    }
+
+    @Override
+    protected void handleError(String tag, Throwable throwable) {
+
     }
 }

@@ -3,7 +3,7 @@ package com.km2labs.mediacontent.loaders.core;
 import android.content.Context;
 import android.support.v4.content.Loader;
 
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
+import com.km2labs.framework.mvp.IPresenter;
 
 /**
  * Created by : Subham Tyagi

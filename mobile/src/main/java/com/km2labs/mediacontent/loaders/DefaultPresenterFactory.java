@@ -1,13 +1,13 @@
 package com.km2labs.mediacontent.loaders;
 
-import com.km2labs.mediacontent.common.RetrofitHelper;
+import com.km2labs.framework.mvp.IPresenter;
+import com.km2labs.framework.network.RetrofitHelper;
 import com.km2labs.mediacontent.common.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.detail.MovieDetailPresenter;
 import com.km2labs.mediacontent.common.movie.list.MovieListPresenter;
 import com.km2labs.mediacontent.common.splash.SplashPresenter;
 import com.km2labs.mediacontent.common.splash.UserAuthenticationService;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
 import com.km2labs.mediacontent.common.user.UserSettings;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 

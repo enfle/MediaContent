@@ -1,6 +1,6 @@
 package com.km2labs.mediacontent.common.cache;
 
-import com.km2labs.mediacontent.dagger.core.scope.PersistenceScopeCache;
+import com.km2labs.framework.cache.DataCache;
 
 import javax.inject.Inject;
 
@@ -10,7 +10,6 @@ import rx.Observable;
  * Created by : Subham Tyagi
  * Created on :  02/09/16.
  */
-@PersistenceScopeCache
 public class PersistenceDataCache implements DataCache {
 
 

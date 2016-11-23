@@ -2,7 +2,7 @@ package com.km2labs.mediacontent.common.cache;
 
 import android.text.TextUtils;
 
-import com.km2labs.mediacontent.dagger.core.scope.InMemoryScopeCache;
+import com.km2labs.framework.cache.DataCache;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,7 +16,6 @@ import rx.Observable;
  * Created on :  02/09/16.
  */
 
-@InMemoryScopeCache
 public class InMemoryCache implements DataCache {
 
     private ConcurrentHashMap<String, Object> mCache = new ConcurrentHashMap<>();

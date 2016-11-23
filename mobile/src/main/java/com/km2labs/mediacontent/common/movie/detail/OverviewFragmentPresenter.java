@@ -1,7 +1,7 @@
 package com.km2labs.mediacontent.common.movie.detail;
 
-import com.km2labs.mediacontent.common.NetworkPresenter;
-import com.km2labs.mediacontent.common.cache.DataCache;
+import com.km2labs.framework.network.BaseNetworkPresenter;
+import com.km2labs.framework.cache.DataCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
 
@@ -12,7 +12,7 @@ import rx.Observable;
  * Created on :  05/10/16.
  */
 
-public class OverviewFragmentPresenter extends NetworkPresenter<OverviewFragmentContract.View> implements OverviewFragmentContract.Presenter {
+public class OverviewFragmentPresenter extends BaseNetworkPresenter<OverviewFragmentContract.View> implements OverviewFragmentContract.Presenter {
 
 
     private MovieService mMovieService;
@@ -28,7 +28,7 @@ public class OverviewFragmentPresenter extends NetworkPresenter<OverviewFragment
     @Override
     public void getMovieDetail(Integer movieId) {
         mMovieId = movieId;
-        startLoading("MovieDetails");
+        startRequest("MovieDetails");
     }
 
     @Override

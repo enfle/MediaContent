@@ -6,9 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 
+import com.km2labs.framework.mvp.IView;
 import com.km2labs.mediacontent.common.ui.BaseActivity;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
-import com.km2labs.mediacontent.common.ui.mvp.IView;
+import com.km2labs.framework.mvp.IPresenter;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 import com.km2labs.mediacontent.loaders.core.PresenterLoader;
 

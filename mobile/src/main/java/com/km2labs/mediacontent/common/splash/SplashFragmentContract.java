@@ -1,7 +1,7 @@
 package com.km2labs.mediacontent.common.splash;
 
-import com.km2labs.mediacontent.common.ui.mvp.ILoadingView;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
+import com.km2labs.framework.mvp.INetworkPresenter;
+import com.km2labs.framework.mvp.ILoadingView;
 
 /**
  * Created by : Subham Tyagi
@@ -10,7 +10,7 @@ import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
 
 public interface SplashFragmentContract {
 
-    interface Presenter extends IPresenter<View> {
+    interface Presenter extends INetworkPresenter<View> {
 
         void performGuestLogin();
     }

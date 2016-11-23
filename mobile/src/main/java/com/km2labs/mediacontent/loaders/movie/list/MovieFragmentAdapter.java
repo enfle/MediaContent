@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.MovieListType;
-import com.km2labs.mediacontent.dagger.movie.list.MovieListFragment;
 
 public class MovieFragmentAdapter extends FragmentStatePagerAdapter {
 

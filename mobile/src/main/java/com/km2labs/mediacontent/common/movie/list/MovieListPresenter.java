@@ -2,8 +2,8 @@ package com.km2labs.mediacontent.common.movie.list;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.km2labs.mediacontent.common.NetworkPresenter;
-import com.km2labs.mediacontent.common.cache.DataCache;
+import com.km2labs.framework.cache.DataCache;
+import com.km2labs.framework.network.BaseNetworkPresenter;
 import com.km2labs.mediacontent.common.movie.MovieListType;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Movie;
@@ -11,7 +11,6 @@ import com.km2labs.mediacontent.common.movie.bean.MovieListResponseDto;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.common.utils.CollectionUtils;
 import com.km2labs.mediacontent.common.utils.PaginationTool;
-import com.km2labs.mediacontent.dagger.core.scope.InMemoryScopeCache;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ import rx.Observable;
  * Created by : Subham Tyagi
  * Created on :  28/08/16.
  */
-public class MovieListPresenter extends NetworkPresenter<MovieListFragmentContract.View> implements MovieListFragmentContract.Presenter {
+public class MovieListPresenter extends BaseNetworkPresenter<MovieListFragmentContract.View> implements MovieListFragmentContract.Presenter {
 
     private static final int LIMIT = 20;
     private MovieService mMovieService;
@@ -33,7 +32,7 @@ public class MovieListPresenter extends NetworkPresenter<MovieListFragmentContra
     private MovieListType mMovieListType;
 
     @Inject
-    public MovieListPresenter(MovieService movieService, @InMemoryScopeCache DataCache memoryCache) {
+    public MovieListPresenter(MovieService movieService, DataCache memoryCache) {
         super(memoryCache);
         mMovieService = movieService;
     }
@@ -55,7 +54,7 @@ public class MovieListPresenter extends NetworkPresenter<MovieListFragmentContra
 
     @Override
     protected Observable<?> getApiObservable(String tag) {
-        return getMovieObservable(100, mMovieListType);
+        return getMovieObservable(1, mMovieListType);
     }
 
     @Override
@@ -76,7 +75,7 @@ public class MovieListPresenter extends NetworkPresenter<MovieListFragmentContra
     @Override
     public void getMovies(MovieListType type, RecyclerView recyclerView) {
         mMovieListType = type;
-        startLoading("DefaultTag");
+        startRequest("DefaultTag");
     }
 
     private Observable<MovieListResponseDto> getMovieObservable(int offset, MovieListType type) {

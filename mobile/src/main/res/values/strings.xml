@@ -34,4 +34,8 @@
     <string name="text_schedules">Tv Shows</string>
     <string name="favorite">Favourite</string>
     <string name="followers">Followers</string>
+    <string name="no_item_exists">No Item Exists</string>
+    <string name="error_user_uthenticaton_failed">You have been logged out. Please login again
+    </string>
+    <string name="login">Login</string>
 </resources>

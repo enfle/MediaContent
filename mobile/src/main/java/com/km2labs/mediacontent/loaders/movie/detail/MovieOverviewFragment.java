@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import com.km2labs.framework.network.RetrofitHelper;
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.RetrofitHelper;
 import com.km2labs.mediacontent.common.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
 import com.km2labs.mediacontent.common.movie.detail.OverviewFragmentContract;
 import com.km2labs.mediacontent.common.movie.detail.OverviewFragmentPresenter;
-import com.km2labs.mediacontent.loaders.BaseLoadingFragment;
+import com.km2labs.mediacontent.loaders.BaseNetworkFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 
 import butterknife.BindView;
@@ -22,7 +22,7 @@ import butterknife.BindView;
  * Created on :  31/08/16.
  */
 
-public class MovieOverviewFragment extends BaseLoadingFragment<OverviewFragmentContract.View, OverviewFragmentContract.Presenter>
+public class MovieOverviewFragment extends BaseNetworkFragment<OverviewFragmentContract.View, OverviewFragmentContract.Presenter>
         implements OverviewFragmentContract.View {
 
     public static final String ARG_MOVIE_ID = "Args:Fragment:Movie:Detail";

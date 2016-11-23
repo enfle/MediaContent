@@ -1,21 +1,24 @@
 package com.km2labs.mediacontent.common.movie.detail;
 
-import com.km2labs.mediacontent.common.cache.DataCache;
+import com.km2labs.framework.cache.DataCache;
+import com.km2labs.framework.network.BaseNetworkPresenter;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
-import com.km2labs.mediacontent.common.ui.mvp.NetworkPresenter;
-import com.km2labs.mediacontent.common.utils.RxUtils;
 
 import javax.inject.Inject;
+
+import rx.Observable;
 
 /**
  * Created by : Subham Tyagi
  * Created on :  31/08/16.
  */
 
-public class MovieDetailPresenter extends NetworkPresenter<MovieDetailContract.View> implements MovieDetailContract.Presenter {
+public class MovieDetailPresenter extends BaseNetworkPresenter<MovieDetailContract.View> implements MovieDetailContract.Presenter {
 
     private MovieService mMovieService;
+
+    private int mMovieId;
 
     @Inject
     public MovieDetailPresenter(MovieService movieService, DataCache dataCache) {
@@ -25,17 +28,27 @@ public class MovieDetailPresenter extends NetworkPresenter<MovieDetailContract.V
 
     @Override
     public void getMovieDetail(int movieId) {
-        mMovieService.getMovieDetail(movieId, "videos,reviews,images")
-                .compose(RxUtils.applyMainIOSchedulers())
-                .subscribe(this::onRequestCompleted, this::onError);
-    }
-
-    private void onRequestCompleted(MovieDetailDto movieDetailDto) {
-        getView().onMovieDetailReceived(movieDetailDto);
+        mMovieId = movieId;
+        startRequest();
     }
 
     @Override
-    protected void handleError(Throwable throwable) {
+    protected <D> void onRequestComplete(D data, String tag) {
+        getView().onMovieDetailReceived((MovieDetailDto) data);
+    }
+
+    @Override
+    protected <D> Boolean isCachedDataValid(D data) {
+        return null;
+    }
+
+    @Override
+    protected Observable<?> getApiObservable(String tag) {
+        return mMovieService.getMovieDetail(mMovieId, "videos,reviews,images");
+    }
+
+    @Override
+    protected void handleError(String tag, Throwable throwable) {
 
     }
 
@@ -43,4 +56,5 @@ public class MovieDetailPresenter extends NetworkPresenter<MovieDetailContract.V
     public void onDestroy() {
 
     }
+
 }

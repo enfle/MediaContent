@@ -3,14 +3,14 @@ package com.km2labs.mediacontent.common.splash;
 
 import android.support.v4.app.Fragment;
 
-import com.km2labs.mediacontent.loaders.BaseLoadingFragment;
+import com.km2labs.mediacontent.loaders.BaseNetworkFragment;
 import com.km2labs.mediacontent.loaders.DefaultPresenterFactory;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SplashFragment extends BaseLoadingFragment<SplashFragmentContract.View, SplashFragmentContract.Presenter>
+public class SplashFragment extends BaseNetworkFragment<SplashFragmentContract.View, SplashFragmentContract.Presenter>
         implements SplashFragmentContract.View {
 
     @Override

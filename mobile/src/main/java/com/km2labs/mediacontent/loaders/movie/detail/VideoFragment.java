@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.google.android.youtube.player.YouTubeIntents;
-import com.km2labs.mediacontent.common.RetrofitHelper;
+import com.km2labs.framework.network.RetrofitHelper;
 import com.km2labs.mediacontent.common.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Video;

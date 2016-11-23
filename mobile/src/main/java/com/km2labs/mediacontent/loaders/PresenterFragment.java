@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 
+import com.km2labs.framework.mvp.IPresenter;
+import com.km2labs.framework.mvp.IView;
 import com.km2labs.mediacontent.common.ui.BaseFragment;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
-import com.km2labs.mediacontent.common.ui.mvp.IView;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 import com.km2labs.mediacontent.loaders.core.PresenterLoader;
 
@@ -18,11 +18,13 @@ import timber.log.Timber;
  * Created on :  03/10/16.
  */
 
-public abstract class PresenterFragment<V extends IView, P extends IPresenter<V>> extends BaseFragment implements LoaderManager.LoaderCallbacks<P> {
+public abstract class PresenterFragment<V extends IView, P extends IPresenter<V>> extends BaseFragment
+        implements LoaderManager.LoaderCallbacks<P> {
 
     private final static int PRESENTER_LOADER_ID = 102;
 
     protected P mPresenter;
+
     private boolean isPresenterCrated;
 
     protected abstract PresenterFactory<P> getPresenterFactory();

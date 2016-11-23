@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
 import com.km2labs.mediacontent.common.movie.detail.MovieDetailContract;
-import com.km2labs.mediacontent.loaders.BaseLoadingFragment;
 import com.km2labs.mediacontent.loaders.DefaultPresenterFactory;
+import com.km2labs.mediacontent.loaders.BaseNetworkFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 import com.squareup.picasso.Picasso;
 
@@ -23,7 +23,7 @@ import butterknife.BindView;
  * Created on :  31/08/16.
  */
 
-public class MovieDetailFragment extends BaseLoadingFragment<MovieDetailContract.View, MovieDetailContract.Presenter>
+public class MovieDetailFragment extends BaseNetworkFragment<MovieDetailContract.View, MovieDetailContract.Presenter>
         implements MovieDetailContract.View {
 
     public static final String ARG_MOVIE_ID = "Args:Fragment:Movie:Detail:Id";

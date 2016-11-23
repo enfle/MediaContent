@@ -1,7 +1,7 @@
 package com.km2labs.mediacontent.common.movie.detail;
 
-import com.km2labs.mediacontent.common.NetworkPresenter;
-import com.km2labs.mediacontent.common.cache.DataCache;
+import com.km2labs.framework.network.BaseNetworkPresenter;
+import com.km2labs.framework.cache.DataCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Images;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
@@ -22,7 +22,7 @@ import rx.Observable;
  * Created on :  04/10/16.
  */
 
-public class VideoListPresenter extends NetworkPresenter<VideoFragmentContract.View> implements VideoFragmentContract.Presenter {
+public class VideoListPresenter extends BaseNetworkPresenter<VideoFragmentContract.View> implements VideoFragmentContract.Presenter {
 
     private static final int LIMIT = 20;
 
@@ -38,7 +38,7 @@ public class VideoListPresenter extends NetworkPresenter<VideoFragmentContract.V
     @Override
     public void loadVideos(Integer movieId) {
         mMovieId = movieId;
-        startLoading("DefaultTag");
+        startRequest("DefaultTag");
     }
 
     @Override

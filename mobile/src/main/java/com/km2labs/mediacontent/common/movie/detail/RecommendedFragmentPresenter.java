@@ -1,13 +1,12 @@
 package com.km2labs.mediacontent.common.movie.detail;
 
-import com.km2labs.mediacontent.common.cache.DataCache;
+import com.km2labs.framework.cache.DataCache;
+import com.km2labs.framework.network.BaseNetworkPresenter;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Movie;
 import com.km2labs.mediacontent.common.movie.bean.MovieListResponseDto;
 import com.km2labs.mediacontent.common.movie.list.MovieGridViewItem;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
-import com.km2labs.mediacontent.common.ui.mvp.NetworkPresenter;
-import com.km2labs.mediacontent.common.utils.RxUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,27 +18,22 @@ import rx.Observable;
  * Created on :  04/10/16.
  */
 
-public class RecommendedFragmentPresenter extends NetworkPresenter<RecommendedFragmentContract.View>
+public class RecommendedFragmentPresenter extends BaseNetworkPresenter<RecommendedFragmentContract.View>
         implements RecommendedFragmentContract.Presenter {
 
     private MovieService mMovieService;
+    private int mMovieId;
 
     public RecommendedFragmentPresenter(MovieService movieService, DataCache dataCache) {
         super(dataCache);
         mMovieService = movieService;
     }
 
-    @Override
-    protected void handleError(Throwable throwable) {
-
-    }
 
     @Override
     public void getRecommendedMovies(Integer movieId) {
-        mMovieService.getRecommendedMovies(movieId)
-                .compose(RxUtils.applyMainIOSchedulers())
-                .flatMap(this::getViewItemObservable)
-                .subscribe(this::onLoadCompleted, this::onError);
+        startRequest();
+        mMovieId = movieId;
     }
 
     private Observable<List<RecyclerItemView>> getViewItemObservable(MovieListResponseDto reviewDto) {
@@ -51,10 +45,29 @@ public class RecommendedFragmentPresenter extends NetworkPresenter<RecommendedFr
         return Observable.just(itemViews);
     }
 
-    private void onLoadCompleted(List<RecyclerItemView> recyclerItemViews) {
-        getView().onLoadingComplete(true);
-        getView().showMovieList(recyclerItemViews);
+    @Override
+    protected <D> Observable<?> transformResponseData(D data) {
+        return this.getViewItemObservable((MovieListResponseDto) data);
     }
 
+    @Override
+    protected <D> void onRequestComplete(D data, String tag) {
+        getView().onLoadingComplete(true);
+        getView().showMovieList((List<RecyclerItemView>) data);
+    }
 
+    @Override
+    protected <D> Boolean isCachedDataValid(D data) {
+        return false;
+    }
+
+    @Override
+    protected Observable<?> getApiObservable(String tag) {
+        return mMovieService.getRecommendedMovies(mMovieId);
+    }
+
+    @Override
+    protected void handleError(String tag, Throwable throwable) {
+
+    }
 }

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.km2labs.mediacontent.common.cache.DataCache;
+import com.km2labs.framework.cache.DataCache;
 import com.km2labs.mediacontent.common.cache.InMemoryCache;
 
 import butterknife.ButterKnife;

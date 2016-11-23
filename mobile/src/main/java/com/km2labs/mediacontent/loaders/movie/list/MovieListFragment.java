@@ -72,11 +72,6 @@ public class MovieListFragment extends RecyclerViewFragment<MovieListFragmentCon
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    @Override
     protected boolean enablePullToRefresh() {
         return true;
     }

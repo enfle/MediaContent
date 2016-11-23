@@ -3,7 +3,7 @@ package com.km2labs.mediacontent.loaders.movie.detail;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.km2labs.mediacontent.common.RetrofitHelper;
+import com.km2labs.framework.network.RetrofitHelper;
 import com.km2labs.mediacontent.common.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.detail.ReviewFragmentContract;
@@ -68,7 +68,7 @@ public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.
     @Override
     protected PresenterFactory<ReviewFragmentContract.Presenter> getPresenterFactory() {
         return () -> new ReviewFragmentPresenter(RetrofitHelper.getRetrofitHelper()
-                .createService(MovieService.class),new InMemoryCache());
+                .createService(MovieService.class), new InMemoryCache());
     }
 
     @Override
