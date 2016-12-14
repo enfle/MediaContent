@@ -4,16 +4,10 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.km2labs.mediacontent.BuildConfig;
-import com.km2labs.mediacontent.common.realm.RealmInteger;
-import com.km2labs.mediacontent.common.realm.RealmIntegerListTypeAdapter;
-import com.km2labs.mediacontent.common.realm.RealmString;
-import com.km2labs.mediacontent.common.realm.RealmStringListTypeAdapter;
 
 import java.io.IOException;
 
-import io.realm.RealmList;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -65,10 +59,6 @@ public class RetrofitHelper {
     @NonNull
     private Gson getGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(new TypeToken<RealmList<RealmString>>() {
-        }.getType(), RealmStringListTypeAdapter.INSTANCE);
-        gsonBuilder.registerTypeAdapter(new TypeToken<RealmList<RealmInteger>>() {
-        }.getType(), RealmIntegerListTypeAdapter.INSTANCE);
         return gsonBuilder.create();
     }
 
