@@ -1,6 +1,6 @@
-package com.km2labs.mediacontent.dagger;
+package com.km2labs.mediacontent.app;
 
-import com.km2labs.mediacontent.app.App;
+import com.km2labs.mediacontent.dagger.ActivityBindingModule;
 
 import javax.inject.Singleton;
 

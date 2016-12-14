@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.dagger.core.ui.activity.DaggerActivity;
 import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
-import com.km2labs.mediacontent.loaders.movie.list.MovieFragmentAdapter;
+import com.km2labs.mediacontent.dagger.movie.detail.MovieDetailFragmentPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +29,7 @@ public class MovieListActivity extends DaggerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_list_activity);
         ButterKnife.bind(this);
-        mViewPager.setAdapter(new MovieFragmentAdapter(this, getSupportFragmentManager()));
+        mViewPager.setAdapter(new MovieDetailFragmentPagerAdapter(this, getSupportFragmentManager()));
         mTableLayout.setupWithViewPager(mViewPager, true);
         mToolbar.setTitle(R.string.movies);
     }

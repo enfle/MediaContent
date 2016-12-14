@@ -9,9 +9,6 @@ import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.core.BuildConfig;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.flurry.android.FlurryAgent;
-import com.km2labs.mediacontent.dagger.AppComponent;
-import com.km2labs.mediacontent.dagger.AppModule;
-import com.km2labs.mediacontent.dagger.DaggerAppComponent;
 import com.km2labs.mediacontent.dagger.core.ui.activity.ActivityComponentBuilder;
 import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
 
@@ -29,10 +26,10 @@ import timber.log.Timber;
 
 public class App extends Application implements ActivitySubcomponentBuilders {
 
-    private static AppComponent sAppComponent;
-
     @Inject
     Map<Class<? extends Activity>, ActivityComponentBuilder> activityComponentBuilders;
+
+    private AppComponent appComponent;
 
     public static ActivitySubcomponentBuilders get(Context context) {
         return ((ActivitySubcomponentBuilders) context.getApplicationContext());
@@ -41,6 +38,8 @@ public class App extends Application implements ActivitySubcomponentBuilders {
     @Override
     public void onCreate() {
         super.onCreate();
+        appComponent = DaggerAppComponent.builder().build();
+        appComponent.inject(this);
         CrashlyticsCore core = new CrashlyticsCore.Builder()
                 //.disabled(BuildConfig.DEBUG)
                 .build();
@@ -50,12 +49,6 @@ public class App extends Application implements ActivitySubcomponentBuilders {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
-        //Timber.plant(new CrashlyticsTree());
-        sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
-    }
-
-    public static AppComponent getAppComponent() {
-        return sAppComponent;
     }
 
     @Override

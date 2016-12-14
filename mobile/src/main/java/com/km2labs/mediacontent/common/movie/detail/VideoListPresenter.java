@@ -10,7 +10,6 @@ import com.km2labs.mediacontent.common.movie.bean.Video;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.common.utils.CollectionUtils;
 import com.km2labs.mediacontent.common.utils.PaginationTool;
-import com.km2labs.mediacontent.loaders.movie.detail.VideoRecyclerItemView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +91,7 @@ public class VideoListPresenter extends NetworkPresenter<VideoFragmentContract.V
             } else {
                 poster = prePoster;
             }
-            itemViews.add(new VideoRecyclerItemView(video, poster));
+            //itemViews.add(new VideoRecyclerItemView(video, poster));
         }
 
         return Observable.just(itemViews);

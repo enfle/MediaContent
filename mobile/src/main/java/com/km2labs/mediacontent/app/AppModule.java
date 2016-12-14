@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.dagger;
+package com.km2labs.mediacontent.app;
 
 import android.content.Context;
 

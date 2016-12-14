@@ -2,10 +2,12 @@ package com.km2labs.mediacontent.common.splash;
 
 
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.km2labs.mediacontent.loaders.BaseLoadingFragment;
-import com.km2labs.mediacontent.loaders.DefaultPresenterFactory;
-import com.km2labs.mediacontent.loaders.core.PresenterFactory;
+import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
+import com.km2labs.mediacontent.dagger.core.ui.fragment.BaseLoadingFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -13,9 +15,10 @@ import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 public class SplashFragment extends BaseLoadingFragment<SplashFragmentContract.View, SplashFragmentContract.Presenter>
         implements SplashFragmentContract.View {
 
+
     @Override
-    protected int getContentLayoutResId() {
-        return 0;
+    protected View getContentView(LayoutInflater inflater, ViewGroup container) {
+        return null;
     }
 
     @Override
@@ -23,19 +26,15 @@ public class SplashFragment extends BaseLoadingFragment<SplashFragmentContract.V
         mPresenter.performGuestLogin();
     }
 
-    @Override
-    protected SplashFragmentContract.View getMVPView() {
-        return this;
-    }
-
-    @Override
-    protected PresenterFactory<SplashFragmentContract.Presenter> getPresenterFactory() {
-        return new DefaultPresenterFactory<>(DefaultPresenterFactory.TYPE_MOVIE_LIST);
-    }
 
 
     @Override
     public void onError() {
+
+    }
+
+    @Override
+    protected void injectMembers(ActivitySubcomponentBuilders activitySubcomponentBuilders) {
 
     }
 }
