@@ -9,7 +9,7 @@ import com.km2labs.mediacontent.common.movie.MovieListType;
 import com.km2labs.mediacontent.common.movie.bean.Movie;
 import com.km2labs.mediacontent.common.movie.list.MovieListFragmentContract;
 import com.km2labs.mediacontent.common.movie.list.MovieViewItem;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.loaders.DefaultPresenterFactory;
 import com.km2labs.mediacontent.loaders.RecyclerViewFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;

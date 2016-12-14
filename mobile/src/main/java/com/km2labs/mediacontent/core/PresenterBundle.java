@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.core;
+package com.km2labs.mediacontent.core;
 
 import android.support.annotation.Nullable;
 import android.util.ArrayMap;

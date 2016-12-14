@@ -7,13 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.km2labs.framework.network.RetrofitHelper;
-import com.km2labs.mediacontent.common.cache.InMemoryCache;
+import com.km2labs.framework.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Movie;
 import com.km2labs.mediacontent.common.movie.detail.SimilarMovieContract;
 import com.km2labs.mediacontent.common.movie.detail.SimilarMoviePresenter;
 import com.km2labs.mediacontent.common.movie.list.MovieGridViewItem;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.loaders.RecyclerViewFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 

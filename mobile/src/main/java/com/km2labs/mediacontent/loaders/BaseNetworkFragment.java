@@ -118,7 +118,6 @@ public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INet
 
     }
 
-
     @Override
     protected void onPresenterCreated() {
         super.onPresenterCreated();

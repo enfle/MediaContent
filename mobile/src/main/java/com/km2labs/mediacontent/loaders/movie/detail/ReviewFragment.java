@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.km2labs.framework.network.RetrofitHelper;
-import com.km2labs.mediacontent.common.cache.InMemoryCache;
+import com.km2labs.framework.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
-import com.km2labs.mediacontent.common.movie.detail.ReviewFragmentContract;
-import com.km2labs.mediacontent.common.movie.detail.ReviewFragmentPresenter;
-import com.km2labs.mediacontent.common.ui.adapter.ItemizedRecyclerAdapter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerAdapter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.common.movie.review.ReviewFragmentContract;
+import com.km2labs.mediacontent.common.movie.review.ReviewFragmentPresenter;
+import com.km2labs.mediacontent.core.adapter.ItemizedRecyclerAdapter;
+import com.km2labs.mediacontent.core.adapter.RecyclerAdapter;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.loaders.RecyclerViewFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 

@@ -1,6 +1,6 @@
 package com.km2labs.mediacontent.loaders;
 
-import com.km2labs.mediacontent.common.ui.BaseActivity;
+import com.km2labs.mediacontent.core.activity.BaseActivity;
 
 /**
  * Created by : Subham Tyagi

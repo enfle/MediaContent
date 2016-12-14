@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.ui.BaseFragment;
+import com.km2labs.mediacontent.core.fragments.BaseFragment;
 import com.km2labs.mediacontent.loaders.movie.list.MovieFragmentAdapter;
 
 import butterknife.BindView;

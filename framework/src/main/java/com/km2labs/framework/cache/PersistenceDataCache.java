@@ -1,8 +1,5 @@
-package com.km2labs.mediacontent.common.cache;
+package com.km2labs.framework.cache;
 
-import com.km2labs.framework.cache.DataCache;
-
-import javax.inject.Inject;
 
 import rx.Observable;
 
@@ -12,8 +9,6 @@ import rx.Observable;
  */
 public class PersistenceDataCache implements DataCache {
 
-
-    @Inject
     public PersistenceDataCache() {
     }
 

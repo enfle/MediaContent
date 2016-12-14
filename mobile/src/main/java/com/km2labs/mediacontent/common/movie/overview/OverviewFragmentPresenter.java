@@ -1,6 +1,6 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.common.movie.overview;
 
-import com.km2labs.framework.network.BaseNetworkPresenter;
+import com.km2labs.framework.mvp.BaseNetworkPresenter;
 import com.km2labs.framework.cache.DataCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;

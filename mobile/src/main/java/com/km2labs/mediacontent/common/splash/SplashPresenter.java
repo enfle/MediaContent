@@ -1,7 +1,7 @@
 package com.km2labs.mediacontent.common.splash;
 
 import com.km2labs.framework.cache.DataCache;
-import com.km2labs.framework.network.BaseNetworkPresenter;
+import com.km2labs.framework.mvp.BaseNetworkPresenter;
 import com.km2labs.mediacontent.common.user.UserSettings;
 
 import rx.Observable;

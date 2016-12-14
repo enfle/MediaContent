@@ -1,10 +1,10 @@
-package com.km2labs.mediacontent.common.ui.adapter;
+package com.km2labs.mediacontent.core.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 
-import com.km2labs.mediacontent.common.utils.CollectionUtils;
+import com.km2labs.mediacontent.core.utils.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

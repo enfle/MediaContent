@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import com.km2labs.framework.mvp.ILoadingView;
 import com.km2labs.framework.mvp.INetworkPresenter;
 import com.km2labs.mediacontent.common.movie.MovieListType;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 
 import java.util.List;
 

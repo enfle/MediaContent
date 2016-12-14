@@ -24,9 +24,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.ui.adapter.ItemizedRecyclerAdapter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerAdapter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.ItemizedRecyclerAdapter;
+import com.km2labs.mediacontent.core.adapter.RecyclerAdapter;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.framework.mvp.INetworkPresenter;
 import com.km2labs.framework.mvp.ILoadingView;
 import com.km2labs.mediacontent.common.utils.ItemClickSupport;

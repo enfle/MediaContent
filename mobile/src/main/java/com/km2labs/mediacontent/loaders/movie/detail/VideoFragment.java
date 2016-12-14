@@ -8,12 +8,12 @@ import android.view.View;
 
 import com.google.android.youtube.player.YouTubeIntents;
 import com.km2labs.framework.network.RetrofitHelper;
-import com.km2labs.mediacontent.common.cache.InMemoryCache;
+import com.km2labs.framework.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Video;
-import com.km2labs.mediacontent.common.movie.detail.VideoFragmentContract;
-import com.km2labs.mediacontent.common.movie.detail.VideoListPresenter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.common.movie.video.VideoFragmentContract;
+import com.km2labs.mediacontent.common.movie.video.VideoListPresenter;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.loaders.RecyclerViewFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 

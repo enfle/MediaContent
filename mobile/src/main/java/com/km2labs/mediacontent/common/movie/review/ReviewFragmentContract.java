@@ -1,6 +1,6 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.common.movie.review;
 
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.framework.mvp.INetworkPresenter;
 import com.km2labs.framework.mvp.ILoadingView;
 

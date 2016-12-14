@@ -7,7 +7,7 @@ import android.support.v4.content.Loader;
 
 import com.km2labs.framework.mvp.IPresenter;
 import com.km2labs.framework.mvp.IView;
-import com.km2labs.mediacontent.common.ui.BaseFragment;
+import com.km2labs.mediacontent.core.fragments.BaseFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 import com.km2labs.mediacontent.loaders.core.PresenterLoader;
 

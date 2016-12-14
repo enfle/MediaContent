@@ -7,11 +7,11 @@ import android.widget.TextView;
 
 import com.km2labs.framework.network.RetrofitHelper;
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.cache.InMemoryCache;
+import com.km2labs.framework.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
-import com.km2labs.mediacontent.common.movie.detail.OverviewFragmentContract;
-import com.km2labs.mediacontent.common.movie.detail.OverviewFragmentPresenter;
+import com.km2labs.mediacontent.common.movie.overview.OverviewFragmentContract;
+import com.km2labs.mediacontent.common.movie.overview.OverviewFragmentPresenter;
 import com.km2labs.mediacontent.loaders.BaseNetworkFragment;
 import com.km2labs.mediacontent.loaders.core.PresenterFactory;
 

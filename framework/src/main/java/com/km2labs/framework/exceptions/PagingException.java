@@ -1,4 +1,4 @@
-package com.km2labs.framework.network;
+package com.km2labs.framework.exceptions;
 
 /**
  * @author e.matsyuk

@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.utils;
+package com.km2labs.mediacontent.core.utils;
 
 import java.util.Collection;
 

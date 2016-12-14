@@ -1,4 +1,4 @@
-package com.km2labs.framework.network;
+package com.km2labs.framework.utils;
 
 
 import com.google.gson.JsonSyntaxException;

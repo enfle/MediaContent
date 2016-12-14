@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.ui;
+package com.km2labs.mediacontent.core.activity;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

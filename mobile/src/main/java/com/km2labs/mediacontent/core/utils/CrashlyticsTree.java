@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.ui;
+package com.km2labs.mediacontent.core.utils;
 
 import android.support.annotation.Nullable;
 import android.util.Log;

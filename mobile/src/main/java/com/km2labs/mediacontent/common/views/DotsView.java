@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.ui.views;
+package com.km2labs.mediacontent.common.views;
 
 import android.animation.ArgbEvaluator;
 import android.content.Context;

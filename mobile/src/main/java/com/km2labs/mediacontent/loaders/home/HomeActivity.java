@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.ui.BaseActivity;
+import com.km2labs.mediacontent.core.activity.BaseActivity;
 
 import butterknife.BindView;
 

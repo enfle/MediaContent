@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.ui;
+package com.km2labs.mediacontent.core.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.km2labs.framework.cache.DataCache;
-import com.km2labs.mediacontent.common.cache.InMemoryCache;
+import com.km2labs.framework.cache.InMemoryCache;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

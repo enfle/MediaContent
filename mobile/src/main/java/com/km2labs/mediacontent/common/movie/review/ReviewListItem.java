@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.common.movie.review;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.bean.Review;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

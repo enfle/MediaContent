@@ -1,11 +1,11 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.common.movie.review;
 
 import com.km2labs.framework.cache.DataCache;
-import com.km2labs.framework.network.BaseNetworkPresenter;
+import com.km2labs.framework.mvp.BaseNetworkPresenter;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Review;
 import com.km2labs.mediacontent.common.movie.bean.Reviews;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 
 import java.util.ArrayList;
 import java.util.List;

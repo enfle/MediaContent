@@ -1,14 +1,14 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.common.movie.video;
 
-import com.km2labs.framework.network.BaseNetworkPresenter;
+import com.km2labs.framework.mvp.BaseNetworkPresenter;
 import com.km2labs.framework.cache.DataCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Images;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
 import com.km2labs.mediacontent.common.movie.bean.Poster;
 import com.km2labs.mediacontent.common.movie.bean.Video;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
-import com.km2labs.mediacontent.common.utils.CollectionUtils;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.utils.CollectionUtils;
 import com.km2labs.mediacontent.common.utils.PaginationTool;
 import com.km2labs.mediacontent.loaders.movie.detail.VideoRecyclerItemView;
 

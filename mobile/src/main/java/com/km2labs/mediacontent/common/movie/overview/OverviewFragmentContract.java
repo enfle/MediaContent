@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.common.movie.overview;
 
 import com.km2labs.framework.mvp.ILoadingView;
 import com.km2labs.framework.mvp.INetworkPresenter;

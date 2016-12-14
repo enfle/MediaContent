@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
-import com.km2labs.framework.network.PagingException;
+import com.km2labs.framework.exceptions.PagingException;
 import com.km2labs.framework.utils.RxUtils;
 
 import java.util.ArrayList;

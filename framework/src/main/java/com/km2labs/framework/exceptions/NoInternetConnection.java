@@ -1,4 +1,7 @@
-package com.km2labs.framework.network;
+package com.km2labs.framework.exceptions;
+
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 
 /**
  * Created by : Subham Tyagi
@@ -22,6 +25,7 @@ public class NoInternetConnection extends RuntimeException {
         super(cause);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public NoInternetConnection(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }

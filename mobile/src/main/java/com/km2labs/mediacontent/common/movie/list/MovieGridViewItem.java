@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.bean.Movie;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.common.utils.PaletteTransformation;
 import com.squareup.picasso.Picasso;
 

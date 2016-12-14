@@ -1,13 +1,11 @@
-package com.km2labs.mediacontent.common.cache;
+package com.km2labs.framework.cache;
 
 import android.text.TextUtils;
 
-import com.km2labs.framework.cache.DataCache;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-import javax.inject.Inject;
 
 import rx.Observable;
 
@@ -22,7 +20,6 @@ public class InMemoryCache implements DataCache {
 
     private final AtomicLong NEXT_ID = new AtomicLong(100L);
 
-    @Inject
     public InMemoryCache() {
     }
 
