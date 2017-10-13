@@ -19,10 +19,6 @@ import dagger.Provides;
 @Module
 public class MovieListModule extends MovieModule<MovieListActivity> {
 
-    public MovieListModule(MovieListActivity activity) {
-        super(activity);
-    }
-
     @Provides
     @ActivityScope
     public MovieListFragmentContract.Presenter provideMovieListPresenter(MovieService movieService, @InMemoryScopeCache DataCache dataCache) {

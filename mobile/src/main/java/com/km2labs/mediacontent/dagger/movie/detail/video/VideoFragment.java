@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.dagger.movie.detail;
+package com.km2labs.mediacontent.dagger.movie.detail.video;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,12 +10,10 @@ import android.view.View;
 import com.km2labs.mediacontent.common.movie.bean.Backdrop;
 import com.km2labs.mediacontent.common.movie.bean.Video;
 import com.km2labs.mediacontent.common.movie.bean.Videos;
-import com.km2labs.mediacontent.common.movie.detail.VideoFragmentContract;
 import com.km2labs.mediacontent.common.ui.adapter.ItemizedRecyclerAdapter;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerAdapter;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.dagger.core.ui.fragment.RecyclerViewFragment;
-import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
 
 import org.parceler.Parcels;
 
@@ -92,11 +90,6 @@ public class VideoFragment extends RecyclerViewFragment<VideoFragmentContract.Vi
 
     @Override
     public void onError() {
-
-    }
-
-    @Override
-    protected void injectMembers(ActivitySubcomponentBuilders activitySubcomponentBuilders) {
 
     }
 }

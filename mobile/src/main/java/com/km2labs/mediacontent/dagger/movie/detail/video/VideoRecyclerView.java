@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.dagger.movie.detail;
+package com.km2labs.mediacontent.dagger.movie.detail.video;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

@@ -1,5 +1,6 @@
 package com.km2labs.mediacontent.app;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.km2labs.mediacontent.common.RetrofitHelper;
@@ -22,16 +23,10 @@ import retrofit2.Retrofit;
 @Module
 public class AppModule {
 
-    private Context mContext;
-
-    public AppModule(Context context) {
-        mContext = context;
-    }
-
     @Provides
     @Singleton
-    public Context provideContext() {
-        return mContext;
+    public Context provideContext(Application application) {
+        return application.getApplicationContext();
     }
 
     @Provides

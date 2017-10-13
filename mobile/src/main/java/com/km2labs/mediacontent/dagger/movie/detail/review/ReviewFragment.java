@@ -1,12 +1,14 @@
-package com.km2labs.mediacontent.dagger.movie.detail;
+package com.km2labs.mediacontent.dagger.movie.detail.review;
 
-import com.km2labs.mediacontent.common.movie.detail.ReviewFragmentContract;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerAdapter;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.dagger.core.scope.FragmentScope;
 import com.km2labs.mediacontent.dagger.core.ui.fragment.RecyclerViewFragment;
-import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
+import com.km2labs.mediacontent.dagger.movie.detail.review.ReviewFragmentContract;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * Created by : Subham Tyagi
@@ -29,11 +31,6 @@ public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.
 
     @Override
     protected void onLoadData() {
-
-    }
-
-    @Override
-    protected void injectMembers(ActivitySubcomponentBuilders activitySubcomponentBuilders) {
 
     }
 

@@ -1,9 +1,10 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.dagger.movie.detail.review;
 
 import com.km2labs.mediacontent.common.cache.DataCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.bean.Review;
 import com.km2labs.mediacontent.common.movie.bean.Reviews;
+import com.km2labs.mediacontent.common.movie.detail.ReviewListItem;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.common.ui.mvp.NetworkPresenter;
 import com.km2labs.mediacontent.common.utils.RxUtils;

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
 import com.km2labs.mediacontent.dagger.core.ui.fragment.BaseLoadingFragment;
 
 /**
@@ -30,11 +29,6 @@ public class SplashFragment extends BaseLoadingFragment<SplashFragmentContract.V
 
     @Override
     public void onError() {
-
-    }
-
-    @Override
-    protected void injectMembers(ActivitySubcomponentBuilders activitySubcomponentBuilders) {
 
     }
 }

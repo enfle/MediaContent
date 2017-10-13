@@ -13,7 +13,6 @@ import com.km2labs.mediacontent.common.ui.adapter.ItemizedRecyclerAdapter;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerAdapter;
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.dagger.core.ui.fragment.RecyclerViewFragment;
-import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
 import com.km2labs.mediacontent.dagger.movie.detail.MovieDetailActivity;
 
 import java.util.List;
@@ -94,10 +93,5 @@ public class MovieListFragment extends RecyclerViewFragment<MovieListFragmentCon
     @Override
     protected boolean enablePullToRefresh() {
         return true;
-    }
-
-    @Override
-    protected void injectMembers(ActivitySubcomponentBuilders activitySubcomponentBuilders) {
-
     }
 }

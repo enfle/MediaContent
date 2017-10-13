@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.dagger.movie.detail;
+package com.km2labs.mediacontent.dagger.movie.detail.overview;
 
 import android.view.LayoutInflater;
 import android.view.View;

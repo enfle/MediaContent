@@ -14,7 +14,9 @@ import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
 import com.km2labs.mediacontent.common.movie.detail.MovieDetailContract;
 import com.km2labs.mediacontent.dagger.core.ui.activity.DaggerActivity;
-import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
+import com.km2labs.mediacontent.dagger.movie.detail.overview.MovieOverviewFragment;
+import com.km2labs.mediacontent.dagger.movie.detail.review.ReviewFragment;
+import com.km2labs.mediacontent.dagger.movie.detail.video.VideoFragment;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -62,11 +64,6 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
     }
 
     @Override
-    protected void injectMembers(ActivitySubcomponentBuilders activitySubcomponentBuilders) {
-
-    }
-
-    @Override
     protected void onStart() {
         super.onStart();
         mPresenter.onViewAttached(this);
@@ -96,7 +93,6 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
     }
 
     protected void loadData() {
-
         if (mMovieId < 1) {
             return;
         }

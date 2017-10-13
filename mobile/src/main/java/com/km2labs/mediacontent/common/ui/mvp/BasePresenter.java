@@ -23,11 +23,11 @@ public abstract class BasePresenter<V extends IView> {
 
     private WeakReference<V> mViewReference;
 
-    protected void onViewAttached(V view) {
-        mViewReference = new WeakReference<V>(view);
+    public void onViewAttached(V view) {
+        mViewReference = new WeakReference<>(view);
     }
 
-    protected void onViewDetached() {
+    public void onViewDetached() {
         if (mViewReference != null) {
             mViewReference.clear();
             mViewReference = null;

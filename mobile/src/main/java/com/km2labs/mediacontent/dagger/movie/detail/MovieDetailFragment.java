@@ -14,7 +14,6 @@ import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
 import com.km2labs.mediacontent.common.movie.detail.MovieDetailContract;
 import com.km2labs.mediacontent.common.movie.detail.MovieDetailPresenter;
-import com.km2labs.mediacontent.dagger.core.ui.activity.ActivitySubcomponentBuilders;
 import com.km2labs.mediacontent.dagger.core.ui.fragment.BaseLoadingFragment;
 import com.squareup.picasso.Picasso;
 
@@ -54,11 +53,6 @@ public class MovieDetailFragment extends BaseLoadingFragment<MovieDetailContract
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    protected void injectMembers(ActivitySubcomponentBuilders activitySubcomponentBuilders) {
-
     }
 
     @Override

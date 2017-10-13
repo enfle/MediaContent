@@ -1,4 +1,4 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.dagger.movie.detail.video;
 
 import com.km2labs.mediacontent.common.NetworkPresenter;
 import com.km2labs.mediacontent.common.cache.DataCache;

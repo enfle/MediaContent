@@ -8,6 +8,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
+import com.km2labs.mediacontent.dagger.movie.detail.overview.MovieOverviewFragment;
+import com.km2labs.mediacontent.dagger.movie.detail.review.ReviewFragment;
+import com.km2labs.mediacontent.dagger.movie.detail.video.VideoFragment;
 
 import org.parceler.Parcels;
 

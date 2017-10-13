@@ -3,6 +3,7 @@ package com.km2labs.mediacontent.common.movie;
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
 import com.km2labs.mediacontent.common.movie.bean.MovieListResponseDto;
 import com.km2labs.mediacontent.common.movie.bean.Reviews;
+import com.km2labs.mediacontent.dagger.core.scope.ActivityScope;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,7 +14,7 @@ import rx.Observable;
  * Created by : Subham Tyagi
  * Created on :  28/08/16.
  */
-
+@ActivityScope
 public interface MovieService {
 
     @GET("movie/popular")

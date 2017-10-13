@@ -1,4 +1,6 @@
-package com.km2labs.mediacontent.common.movie.detail;
+package com.km2labs.mediacontent.dagger.movie.detail.video;
+
+import android.support.v7.widget.RecyclerView;
 
 import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.common.ui.mvp.ILoadingView;
@@ -11,13 +13,19 @@ import java.util.List;
  * Created on :  04/10/16.
  */
 
-public interface ReviewFragmentContract {
+public interface VideoFragmentContract {
 
     interface View extends ILoadingView {
-        void showMovieReview(List<RecyclerItemView> reviewList);
+
+        void showVideoList(List<RecyclerItemView> videos);
+
+        void showErrorMessage();
+
+        RecyclerView getRecyclerView();
     }
 
     interface Presenter extends IPresenter<View> {
-        void loadMovieReview(Integer movieId);
+
+        void loadVideos(Integer movieId);
     }
 }

@@ -16,10 +16,6 @@ import retrofit2.Retrofit;
 @Module
 public abstract class MovieModule<A> extends ActivityModule<A> {
 
-    public MovieModule(A activity) {
-        super(activity);
-    }
-
     @Provides
     @ActivityScope
     public MovieService provideMovieService(Retrofit retrofit) {
