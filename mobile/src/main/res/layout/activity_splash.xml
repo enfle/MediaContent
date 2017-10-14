@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.km2labs.mediacontent.common.splash.SplashActivity">
+    tools:context=".splash.SplashActivity">
     <fragment
         android:id="@+id/splash_fragment"
-        class="com.km2labs.mediacontent.common.splash.SplashFragment"
+        class="com.km2labs.mediacontent.splash.SplashFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

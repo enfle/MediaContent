@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.common.movie.bean.Review;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -28,7 +28,7 @@ public class MovieListActivity extends DaggerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_list_activity);
         ButterKnife.bind(this);
-        mViewPager.setAdapter(new MovieDetailFragmentPagerAdapter(this, getSupportFragmentManager()));
+        mViewPager.setAdapter(new MovieFragmentAdapter(this, getSupportFragmentManager()));
         mTableLayout.setupWithViewPager(mViewPager, true);
         mToolbar.setTitle(R.string.movies);
     }

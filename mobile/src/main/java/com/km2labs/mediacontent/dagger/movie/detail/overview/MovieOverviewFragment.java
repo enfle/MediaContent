@@ -1,10 +1,7 @@
 package com.km2labs.mediacontent.dagger.movie.detail.overview;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.km2labs.mediacontent.common.ui.BaseFragment;
+import com.km2labs.mediacontent.core.fragment.BaseFragment;
 
 /**
  * Created by : Subham Tyagi
@@ -19,7 +16,7 @@ public class MovieOverviewFragment extends BaseFragment {
     }
 
     @Override
-    protected View getFragmentView(LayoutInflater inflater, ViewGroup container) {
-        return null;
+    protected int getLayoutView() {
+        return 0;
     }
 }

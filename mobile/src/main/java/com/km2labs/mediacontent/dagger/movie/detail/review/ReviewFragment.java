@@ -1,37 +1,23 @@
 package com.km2labs.mediacontent.dagger.movie.detail.review;
 
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerAdapter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
-import com.km2labs.mediacontent.dagger.core.scope.FragmentScope;
+
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.dagger.core.ui.fragment.RecyclerViewFragment;
-import com.km2labs.mediacontent.dagger.movie.detail.review.ReviewFragmentContract;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 /**
  * Created by : Subham Tyagi
  * Created on :  31/08/16.
  */
 
-public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.View, ReviewFragmentContract.Presenter> implements ReviewFragmentContract.View {
+public class ReviewFragment extends RecyclerViewFragment implements ReviewFragmentContract.View {
 
     public static final String ARG_REVIEWS = "Arg:Fragment:Movie:Reviews";
 
     @Override
-    protected RecyclerAdapter getAdapter() {
-        return null;
-    }
-
-    @Override
-    protected LayoutManagerType getLayoutManagerType() {
-        return null;
-    }
-
-    @Override
-    protected void onLoadData() {
-
+    protected int getLayoutView() {
+        return 0;
     }
 
     @Override
@@ -40,7 +26,17 @@ public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.
     }
 
     @Override
-    public void onError() {
+    protected void loadData() {
 
+    }
+
+    @Override
+    public void onError(Throwable error) {
+
+    }
+
+    @Override
+    protected LayoutManagerType getLayoutManagerType() {
+        return null;
     }
 }

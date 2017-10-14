@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.common.movie.bean.Backdrop;
 import com.km2labs.mediacontent.common.movie.bean.Video;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;

@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -19,8 +24,9 @@
         <!--<category android:name="android.intent.category.LAUNCHER" />-->
         <!--</intent-filter>-->
         <!--</activity>-->
-
+        <activity android:name=".login.LoginActivity"/>
         <activity android:name=".dagger.movie.list.MovieListActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,14 +40,17 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="156c45db84f959fff0626bd3c7ff7354bbd0c94b" />
+            android:value="156c45db84f959fff0626bd3c7ff7354bbd0c94b"/>
 
-        <activity android:name=".common.splash.SplashActivity">
-            <!--<intent-filter>
+        <activity android:name=".splash.SplashActivity">
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
 
     </application>

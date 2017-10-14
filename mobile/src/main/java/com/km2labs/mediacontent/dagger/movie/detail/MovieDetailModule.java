@@ -5,7 +5,7 @@ import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.common.movie.detail.MovieDetailContract;
 import com.km2labs.mediacontent.common.movie.detail.MovieDetailPresenter;
 import com.km2labs.mediacontent.dagger.core.scope.ActivityScope;
-import com.km2labs.mediacontent.dagger.core.scope.InMemoryScopeCache;
+import com.km2labs.mediacontent.dagger.core.scope.InMemory;
 import com.km2labs.mediacontent.dagger.movie.MovieModule;
 
 import dagger.Module;
@@ -21,7 +21,7 @@ public class MovieDetailModule extends MovieModule<MovieDetailActivity> {
 
     @Provides
     @ActivityScope
-    public MovieDetailContract.Presenter providePresenter(MovieService movieService, @InMemoryScopeCache DataCache dataCache) {
+    public MovieDetailContract.Presenter providePresenter(MovieService movieService, @InMemory DataCache dataCache) {
         return new MovieDetailPresenter(movieService, dataCache);
     }
 }

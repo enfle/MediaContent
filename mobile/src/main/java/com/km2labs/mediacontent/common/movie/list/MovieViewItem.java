@@ -10,9 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
-import com.km2labs.mediacontent.common.utils.PaletteTransformation;
 import com.km2labs.mediacontent.common.movie.bean.Movie;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
@@ -79,7 +78,6 @@ public class MovieViewItem implements RecyclerItemView {
             mProgressBar.setProgress((movie.getVoteAverage().intValue()));
             Picasso.with(mBackdrop.getContext())
                     .load("http://image.tmdb.org/t/p/w500/" + movie.getBackdropPath())
-                    .transform(PaletteTransformation.instance())
                     .fit()
                     .into(mBackdrop);
         }

@@ -3,7 +3,7 @@ package com.km2labs.mediacontent.dagger.movie.detail.review;
 import com.km2labs.mediacontent.common.cache.DataCache;
 import com.km2labs.mediacontent.common.movie.MovieService;
 import com.km2labs.mediacontent.dagger.core.scope.FragmentScope;
-import com.km2labs.mediacontent.dagger.core.scope.InMemoryScopeCache;
+import com.km2labs.mediacontent.dagger.core.scope.InMemory;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +17,7 @@ public class ReviewModule {
 
     @Provides
     @FragmentScope
-    public ReviewFragmentContract.Presenter provideReviewPresenter(MovieService movieService, @InMemoryScopeCache DataCache dataCache) {
+    public ReviewFragmentContract.Presenter provideReviewPresenter(MovieService movieService, @InMemory DataCache dataCache) {
         return new ReviewFragmentPresenter(movieService, dataCache);
     }
 }

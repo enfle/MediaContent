@@ -14,18 +14,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
-import com.km2labs.mediacontent.common.ui.mvp.IView;
+import com.km2labs.mediacontent.common.ui.AbsNetworkFragment;
 import com.km2labs.mediacontent.common.ui.views.DotsView;
+import com.km2labs.mediacontent.core.fragment.BaseFragment;
+import com.km2labs.mediacontent.core.mvp.view.ILoadingView;
+import com.km2labs.mediacontent.core.mvp.presenter.NetworkPresenter;
 
 import butterknife.BindView;
+import butterknife.Optional;
 
 /**
  * Created by : Subham Tyagi
  * Created on :  28/08/16.
  */
 
-public abstract class BaseLoadingFragment<V extends IView, P extends IPresenter<V>> extends DaggerFragment<V, P> implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseLoadingFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final AccelerateDecelerateInterpolator ACCELERATE_DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
 
@@ -38,29 +41,28 @@ public abstract class BaseLoadingFragment<V extends IView, P extends IPresenter<
     @BindView(R.id.retry_button)
     Button mRetryButton;
 
+    @BindView(R.id.contentFrame)
+    @Nullable
+    View mContentView;
+
+    @BindView(R.id.swipe_referesh_layout)
+    @Nullable
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
+    protected void loadData(){
+
+    }
+
     @Override
-    protected final View getFragmentView(LayoutInflater inflater, ViewGroup container) {
-        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.loading_fragment, container, false);
-        if (enablePullToRefresh()) {
-            setRefreshLayout(inflater, viewGroup);
-        } else {
-            View contentView = getContentView(inflater, viewGroup);
-            viewGroup.addView(contentView);
-        }
-        return viewGroup;
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setRefreshLayout();
     }
 
-    private void setRefreshLayout(LayoutInflater inflater, ViewGroup viewGroup) {
-        SwipeRefreshLayout swipeRefreshLayout = new SwipeRefreshLayout(getContext());
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(viewGroup.getLayoutParams());
-        swipeRefreshLayout.setLayoutParams(layoutParams);
-        viewGroup.addView(swipeRefreshLayout);
-        View contentView = getContentView(inflater, swipeRefreshLayout);
-        swipeRefreshLayout.setOnRefreshListener(this);
-        swipeRefreshLayout.addView(contentView);
+    private void setRefreshLayout() {
+        if (mSwipeRefreshLayout != null && enablePullToRefresh())
+            mSwipeRefreshLayout.setOnRefreshListener(this);
     }
-
-    protected abstract View getContentView(LayoutInflater inflater, ViewGroup container);
 
     public void onLoadingStart() {
         ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(mProgressBar, DotsView.DOTS_PROGRESS, 0, 1f);
@@ -90,15 +92,11 @@ public abstract class BaseLoadingFragment<V extends IView, P extends IPresenter<
         loadData();
     }
 
-
-    protected abstract void loadData();
-
     protected boolean enablePullToRefresh() {
         return false;
     }
 
-
-    public void showEmptyScreen() {
+    public void onEmptyResult() {
         // FIXME: 13/09/16 create string resource
         mMessageTextView.setText("No item exists");
     }
@@ -107,15 +105,4 @@ public abstract class BaseLoadingFragment<V extends IView, P extends IPresenter<
     public void onRefresh() {
 
     }
-
-    public void onNetworkError() {
-
-    }
-
-
-    public void onAuthenticationError() {
-
-    }
-
-
 }

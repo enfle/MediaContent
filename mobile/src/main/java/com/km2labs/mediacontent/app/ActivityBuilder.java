@@ -5,6 +5,7 @@ import com.km2labs.mediacontent.dagger.movie.detail.MovieDetailFragmentProvider;
 import com.km2labs.mediacontent.dagger.movie.detail.MovieDetailActivity;
 import com.km2labs.mediacontent.dagger.movie.detail.MovieDetailModule;
 import com.km2labs.mediacontent.dagger.movie.list.MovieListActivity;
+import com.km2labs.mediacontent.dagger.movie.list.MovieListFragmentProvider;
 import com.km2labs.mediacontent.dagger.movie.list.MovieListModule;
 
 import dagger.Module;
@@ -18,7 +19,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector(modules = {MovieListModule.class})
+    @ContributesAndroidInjector(modules = {MovieListFragmentProvider.class})
     @ActivityScope
     abstract MovieListActivity movieListActivityComponentBuilder();
 

@@ -1,8 +1,9 @@
 package com.km2labs.mediacontent.dagger.movie.detail.review;
 
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
-import com.km2labs.mediacontent.common.ui.mvp.ILoadingView;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.mvp.view.ILoadingView;
+import com.km2labs.mediacontent.core.mvp.view.INetworkView;
+import com.km2labs.mediacontent.core.mvp.presenter.NetworkPresenter;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface ReviewFragmentContract {
         void showMovieReview(List<RecyclerItemView> reviewList);
     }
 
-    interface Presenter extends IPresenter<View> {
+    interface Presenter extends NetworkPresenter<View> {
         void loadMovieReview(Integer movieId);
     }
 }

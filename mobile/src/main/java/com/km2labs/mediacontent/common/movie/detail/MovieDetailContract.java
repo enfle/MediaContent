@@ -1,8 +1,8 @@
 package com.km2labs.mediacontent.common.movie.detail;
 
 import com.km2labs.mediacontent.common.movie.bean.MovieDetailDto;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
-import com.km2labs.mediacontent.common.ui.mvp.ILoadingView;
+import com.km2labs.mediacontent.core.mvp.view.ILoadingView;
+import com.km2labs.mediacontent.core.mvp.presenter.NetworkPresenter;
 
 /**
  * Created by : Subham Tyagi
@@ -11,7 +11,7 @@ import com.km2labs.mediacontent.common.ui.mvp.ILoadingView;
 
 public interface MovieDetailContract {
 
-    interface Presenter extends IPresenter<View> {
+    interface Presenter extends NetworkPresenter<View> {
         void getMovieDetail(int movieId);
     }
 

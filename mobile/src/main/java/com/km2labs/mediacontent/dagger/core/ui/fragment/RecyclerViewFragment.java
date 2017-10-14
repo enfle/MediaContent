@@ -21,28 +21,24 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.km2labs.mediacontent.R;
-import com.km2labs.mediacontent.common.ui.adapter.ItemizedRecyclerAdapter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerAdapter;
-import com.km2labs.mediacontent.common.ui.adapter.RecyclerItemView;
-import com.km2labs.mediacontent.common.ui.mvp.IPresenter;
-import com.km2labs.mediacontent.common.ui.mvp.IView;
-import com.km2labs.mediacontent.common.utils.ItemClickSupport;
+import com.km2labs.mediacontent.common.ui.AbsNetworkFragment;
+import com.km2labs.mediacontent.core.adapter.ItemizedRecyclerAdapter;
+import com.km2labs.mediacontent.core.adapter.RecyclerAdapter;
+import com.km2labs.mediacontent.core.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.core.adapter.ItemClickSupport;
 
 import java.util.List;
 
 import butterknife.BindView;
 
 
-public abstract class RecyclerViewFragment<V extends IView, P extends IPresenter<V>> extends BaseLoadingFragment<V, P> {
+public abstract class RecyclerViewFragment extends AbsNetworkFragment {
 
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
-
 
     protected enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -60,8 +56,6 @@ public abstract class RecyclerViewFragment<V extends IView, P extends IPresenter
 
     /*Abstract methods*/
     abstract protected LayoutManagerType getLayoutManagerType();
-
-    protected abstract void onLoadData();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -114,16 +108,6 @@ public abstract class RecyclerViewFragment<V extends IView, P extends IPresenter
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
-    }
-
-    @Override
-    protected View getContentView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.recycler_view, container, false);
-    }
-
-    @Override
-    final protected void loadData() {
-        onLoadData();
     }
 
     public void addItems(List<RecyclerItemView> recyclerItemViews) {

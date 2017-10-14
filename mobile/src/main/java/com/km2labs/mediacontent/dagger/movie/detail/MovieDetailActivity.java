@@ -26,7 +26,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MovieDetailActivity extends DaggerActivity implements MovieDetailContract.View {
+public class MovieDetailActivity extends DaggerActivity {
 
     public static final String ARG_MOVIE_ID = "Args:Activity:Movie:Detail:Id";
 
@@ -66,7 +66,6 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
     @Override
     protected void onStart() {
         super.onStart();
-        mPresenter.onViewAttached(this);
         loadData();
     }
 
@@ -77,55 +76,12 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
     }
 
 
-    @Override
-    public void onLoadingStart() {
-
-    }
-
-    @Override
-    public void onLoadingComplete(boolean success) {
-
-    }
-
-    @Override
-    public void showEmptyScreen() {
-
-    }
-
     protected void loadData() {
         if (mMovieId < 1) {
             return;
         }
         mPresenter.getMovieDetail(mMovieId);
     }
-
-    @Override
-    public void onMovieDetailReceived(MovieDetailDto movieDetailDto) {
-        mMovieDetailDto = movieDetailDto;
-        String imagePath = movieDetailDto.getBackdropPath();
-        Picasso.with(mBackdrop.getContext())
-                .load("http://image.tmdb.org/t/p/w500" + imagePath)
-                .fit()
-                .into(mBackdrop);
-        mAdapter.setMovieDetailDto(mMovieDetailDto);
-        mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onNetworkError() {
-
-    }
-
-    @Override
-    public void onError() {
-
-    }
-
-    @Override
-    public void onAuthenticationError() {
-
-    }
-
 
     private static class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
 

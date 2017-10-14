@@ -3,12 +3,14 @@ package com.km2labs.mediacontent.app;
 import android.app.Application;
 import android.content.Context;
 
-import com.km2labs.mediacontent.common.RetrofitHelper;
 import com.km2labs.mediacontent.common.cache.DataCache;
 import com.km2labs.mediacontent.common.cache.InMemoryCache;
 import com.km2labs.mediacontent.common.cache.PersistenceDataCache;
-import com.km2labs.mediacontent.dagger.core.scope.InMemoryScopeCache;
-import com.km2labs.mediacontent.dagger.core.scope.PersistenceScopeCache;
+import com.km2labs.mediacontent.common.movie.MovieService;
+import com.km2labs.mediacontent.core.util.RetrofitHelper;
+import com.km2labs.mediacontent.dagger.core.scope.FragmentScope;
+import com.km2labs.mediacontent.dagger.core.scope.InMemory;
+import com.km2labs.mediacontent.dagger.core.scope.Persistence;
 
 import javax.inject.Singleton;
 
@@ -37,17 +39,22 @@ public class AppModule {
 
     @Provides
     @Singleton
-    @InMemoryScopeCache
+    @InMemory
     DataCache provideMemoryDataCache() {
         return new InMemoryCache();
     }
 
     @Provides
     @Singleton
-    @PersistenceScopeCache
+    @Persistence
     DataCache providePersistenceCache() {
         return new PersistenceDataCache();
     }
 
+    @Provides
+    @Singleton
+    public MovieService provideMovieService(Retrofit retrofit) {
+        return retrofit.create(MovieService.class);
+    }
 
 }
