@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:orientation="vertical"
->
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,14 +14,13 @@
             android:id="@+id/backdrop"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/download"/>
+            android:src="@drawable/download" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-        >
+            android:paddingRight="@dimen/activity_horizontal_margin">
 
             <TextView
                 android:id="@+id/title"
@@ -32,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:text="SpiderMan"/>
+                android:text="SpiderMan" />
 
 
             <FrameLayout
@@ -48,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="5.0"/>
+                    android:text="5.0" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -57,10 +54,11 @@
                     android:layout_height="match_parent"
                     android:max="10"
                     android:progress="5"
-                    android:progressDrawable="@drawable/progress_background"/>
+                    android:progressDrawable="@drawable/progress_background" />
             </FrameLayout>
 
         </RelativeLayout>
+
         <TextView
             android:id="@+id/subtitle"
             style="@style/TextAppearance.AppCompat.Caption"
@@ -71,6 +69,6 @@
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="Subtitle"/>
+            android:text="Subtitle" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

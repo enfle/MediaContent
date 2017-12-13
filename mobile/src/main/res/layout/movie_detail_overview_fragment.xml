@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,6 +12,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/activity_horizontal_margin"
-                    android:text="@string/overview"/>
+                    android:text="@string/overview" />
 
                 <TextView
                     android:id="@+id/overview_text_view"
@@ -31,36 +31,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/activity_horizontal_margin"
-                    android:text="aksdjfkasjdfkjskdfhksdfkkfds"/>
+                    android:text="aksdjfkasjdfkjskdfhksdfkkfds" />
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
+
         <TextView
             style="@style/Base.TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="@string/similar_movies"
-        />
+            android:text="@string/similar_movies" />
 
         <FrameLayout
             android:id="@+id/similar_movie_container"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+            android:layout_marginBottom="@dimen/activity_horizontal_margin" />
 
         <TextView
             style="@style/Base.TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="@string/recom_movies"
-        />
+            android:text="@string/recom_movies" />
 
         <FrameLayout
             android:id="@+id/recommended_movie_container"
             android:layout_width="match_parent"
-            android:layout_height="160dp"/>
+            android:layout_height="160dp" />
 
     </LinearLayout>
 

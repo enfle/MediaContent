@@ -56,7 +56,7 @@ dependencies {
     //retrofit
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofit"
-    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofit"
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     //Okhtp
@@ -64,9 +64,12 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp"
 
     // Dagger dependencies
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
-    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.google.dagger:dagger:2.12'
+    compile 'com.google.dagger:dagger-android-support:2.12'
+    compile 'com.google.dagger:dagger-android:2.12'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.12'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.12'
+
 
     compile('com.crashlytics.sdk.android:crashlytics:2.6.2@aar') {
         transitive = true;
@@ -75,8 +78,7 @@ dependencies {
     compile 'org.parceler:parceler-api:1.1.5'
     annotationProcessor 'org.parceler:parceler:1.1.5'
 
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.2.2'
-
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.flurry.android:analytics:6.2.0'
 }

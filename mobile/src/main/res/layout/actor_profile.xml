@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        app:theme="@style/TransparentBar"/>
+        app:theme="@style/TransparentBar" />
 
     <RelativeLayout
         android:id="@+id/background"
@@ -28,7 +27,7 @@
             android:layout_marginTop="70dp"
             android:text="Hugh Jackman"
             android:textColor="@android:color/white"
-            android:textSize="25sp"/>
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +43,7 @@
                 android:background="@drawable/oval_background"
                 android:padding="5dp"
                 android:text="ACTOR"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,7 +53,7 @@
                 android:background="@drawable/oval_background"
                 android:padding="5dp"
                 android:text="PRODUCER"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -69,7 +68,7 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:srcCompat="@drawable/ic_user_profile"/>
+            app:srcCompat="@drawable/ic_user_profile" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -97,7 +96,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:text="@string/followers"
                     android:textColor="#3E3E3E"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,7 +106,7 @@
                     android:textColor="#3E3E3E"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    tools:text="3.5K"/>
+                    tools:text="3.5K" />
 
             </LinearLayout>
 
@@ -125,7 +124,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:text="Following"
                     android:textColor="#3E3E3E"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,7 +134,7 @@
                     android:textColor="#3E3E3E"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    tools:text="1.9K"/>
+                    tools:text="1.9K" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
