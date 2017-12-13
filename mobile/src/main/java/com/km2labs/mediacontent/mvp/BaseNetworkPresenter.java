@@ -10,7 +10,6 @@ import org.reactivestreams.Subscription;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
-import io.reactivex.functions.Predicate;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import timber.log.Timber;
 

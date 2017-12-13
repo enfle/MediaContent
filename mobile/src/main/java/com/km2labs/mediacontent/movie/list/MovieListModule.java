@@ -3,7 +3,6 @@ package com.km2labs.mediacontent.movie.list;
 import com.km2labs.mediacontent.cache.DataCache;
 import com.km2labs.mediacontent.dagger.scope.ActivityScope;
 import com.km2labs.mediacontent.dagger.scope.InMemoryCache;
-import com.km2labs.mediacontent.movie.MovieModule;
 import com.km2labs.mediacontent.service.MovieService;
 
 import dagger.Module;

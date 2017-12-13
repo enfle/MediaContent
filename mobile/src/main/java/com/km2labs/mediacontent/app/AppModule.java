@@ -6,7 +6,6 @@ import com.km2labs.mediacontent.cache.DataCache;
 import com.km2labs.mediacontent.cache.InMemoryDataCache;
 import com.km2labs.mediacontent.cache.PersistenceDataCache;
 import com.km2labs.mediacontent.dagger.ActivityModule;
-import com.km2labs.mediacontent.dagger.scope.ActivityScope;
 import com.km2labs.mediacontent.dagger.scope.InMemoryCache;
 import com.km2labs.mediacontent.dagger.scope.PersistenceCache;
 import com.km2labs.mediacontent.network.RetrofitHelper;
@@ -62,5 +61,4 @@ public class AppModule {
     public MovieService provideMovieService(Retrofit retrofit) {
         return retrofit.create(MovieService.class);
     }
-
 }
