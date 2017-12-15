@@ -60,7 +60,8 @@ public class VideoRecyclerView implements RecyclerItemView {
         public void bind() {
             Picasso.with(mBackdropImage.getContext())
                     .load("http://image.tmdb.org/t/p/w500/" + mBackdrop.getFilePath())
-                    .fit()
+                    .resize(150, 150)
+                    .centerCrop()
                     .into(mBackdropImage);
         }
     }

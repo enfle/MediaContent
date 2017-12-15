@@ -12,6 +12,10 @@ import java.util.List;
         analyze = {Videos.class})
 public class Videos {
 
+    @SerializedName("id")
+    @Expose
+    Integer id;
+
     @SerializedName("results")
     @Expose
     List<Video> mVideos = new ArrayList<>();
@@ -30,4 +34,11 @@ public class Videos {
         this.mVideos = videos;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

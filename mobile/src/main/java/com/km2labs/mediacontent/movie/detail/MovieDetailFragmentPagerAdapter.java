@@ -8,10 +8,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.km2labs.mediacontent.R;
 import com.km2labs.mediacontent.beans.MovieDetailDto;
+import com.km2labs.mediacontent.movie.detail.overview.MovieOverviewFragment;
 import com.km2labs.mediacontent.movie.detail.reviews.ReviewFragment;
 import com.km2labs.mediacontent.movie.detail.video.VideoFragment;
-
-import org.parceler.Parcels;
 
 /**
  * Created by : Subham Tyagi
@@ -23,6 +22,7 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
     private Context mContext;
 
     private MovieDetailDto mMovieDetailDto;
+    private Integer movieId;
 
     public MovieDetailFragmentPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -33,21 +33,26 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
         mMovieDetailDto = movieDetailDto;
     }
 
+
+    public void setMovieId(Integer movieId) {
+        this.movieId = movieId;
+    }
+
     @Override
     public Fragment getItem(int position) {
         Fragment fragment;
         Bundle bundle = new Bundle();
         switch (position) {
             case 0:
-                bundle.putParcelable(MovieOverviewFragment.ARG_MOVIE_DETAIL, Parcels.wrap(mMovieDetailDto));
+                bundle.putInt(MovieOverviewFragment.ARG_MOVIE_ID, movieId);
                 fragment = new MovieOverviewFragment();
                 break;
             case 1:
-                bundle.putParcelable(VideoFragment.ARG_VIDEO_LIST, Parcels.wrap(mMovieDetailDto.getVideos()));
+                bundle.putInt(VideoFragment.ARG_MOVIE_ID, movieId);
                 fragment = new VideoFragment();
                 break;
             case 2:
-                bundle.putParcelable(ReviewFragment.ARG_REVIEWS, Parcels.wrap(mMovieDetailDto.getVideos()));
+                bundle.putInt(ReviewFragment.ARG_MOVIE_ID, movieId);
                 fragment = new ReviewFragment();
                 break;
             default:
@@ -59,6 +64,9 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
+//        if (mMovieDetailDto == null) {
+//            return 0;
+//        }
         return 3;
     }
 
@@ -75,4 +83,5 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
                 throw new IllegalArgumentException("Invalid position");
         }
     }
+
 }

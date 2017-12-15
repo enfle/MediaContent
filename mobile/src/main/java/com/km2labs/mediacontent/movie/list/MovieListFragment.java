@@ -9,7 +9,10 @@ import com.km2labs.mediacontent.base.adapter.ItemizedRecyclerAdapter;
 import com.km2labs.mediacontent.base.adapter.RecyclerAdapter;
 import com.km2labs.mediacontent.base.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.base.fragments.RecyclerViewFragment;
+import com.km2labs.mediacontent.beans.Movie;
 import com.km2labs.mediacontent.movie.detail.MovieDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -58,9 +61,9 @@ public class MovieListFragment extends RecyclerViewFragment<MovieListFragmentCon
     protected void OnItemClicked(RecyclerView recyclerView, int position, View view) {
         super.OnItemClicked(recyclerView, position, view);
         MovieViewItem itemView = (MovieViewItem) mAdapter.getItems().get(position);
-        int movieId = itemView.getMovie().getId();
+        Movie movie = itemView.getMovie();
         Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
-        intent.putExtra(MovieDetailActivity.ARG_MOVIE_ID, movieId);
+        intent.putExtra(MovieDetailActivity.ARG_MOVIE, Parcels.wrap(movie));
         startActivity(intent);
     }
 
@@ -73,14 +76,13 @@ public class MovieListFragment extends RecyclerViewFragment<MovieListFragmentCon
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.onViewDetached();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mPresenter.onViewDetached();
     }
-
 
     @Override
     protected boolean enablePullToRefresh() {

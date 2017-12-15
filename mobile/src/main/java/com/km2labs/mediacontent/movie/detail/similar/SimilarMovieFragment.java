@@ -34,6 +34,18 @@ public class SimilarMovieFragment extends RecyclerViewFragment<SimilarMovieContr
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPresenter.onViewAttached(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mPresenter.onViewDetached();
+    }
+
+    @Override
     public void onError() {
 
     }
@@ -44,7 +56,7 @@ public class SimilarMovieFragment extends RecyclerViewFragment<SimilarMovieContr
         MovieGridViewItem itemView = (MovieGridViewItem) mAdapter.getItems().get(position);
         Movie movieId = itemView.getMovie();
         Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
-        intent.putExtra(MovieDetailActivity.ARG_MOVIE_ID, Parcels.wrap(movieId));
+        intent.putExtra(MovieDetailActivity.ARG_MOVIE, Parcels.wrap(movieId));
         startActivity(intent);
     }
 
@@ -62,10 +74,5 @@ public class SimilarMovieFragment extends RecyclerViewFragment<SimilarMovieContr
     @Override
     public void showMovieList(List<RecyclerItemView> recyclerItemViews) {
         super.addItems(recyclerItemViews);
-    }
-
-    @Override
-    protected int getContentLayoutResId() {
-        return 0;
     }
 }

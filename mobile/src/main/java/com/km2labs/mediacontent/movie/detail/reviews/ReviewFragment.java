@@ -1,6 +1,9 @@
 package com.km2labs.mediacontent.movie.detail.reviews;
 
-import com.km2labs.mediacontent.base.adapter.RecyclerAdapter;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+
 import com.km2labs.mediacontent.base.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.base.fragments.RecyclerViewFragment;
 
@@ -13,21 +16,31 @@ import java.util.List;
 
 public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.View, ReviewFragmentContract.Presenter> implements ReviewFragmentContract.View {
 
-    public static final String ARG_REVIEWS = "Arg:Fragment:Movie:Reviews";
+    public static final String ARG_MOVIE_ID = "Arg:Fragment:Movie:ID";
 
-    @Override
-    protected RecyclerAdapter getAdapter() {
-        return null;
-    }
+    private Integer mMovieId;
 
     @Override
     protected LayoutManagerType getLayoutManagerType() {
-        return null;
+        return LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPresenter.onViewAttached(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mPresenter.onViewDetached();
     }
 
     @Override
     protected void onLoadData() {
-
+        mMovieId = getArguments().getInt(ARG_MOVIE_ID);
+        mPresenter.loadMovieReview(mMovieId);
     }
 
     @Override
@@ -37,11 +50,6 @@ public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.
 
     @Override
     public void showMovieReview(List<RecyclerItemView> reviewList) {
-
-    }
-
-    @Override
-    protected int getContentLayoutResId() {
-        return 0;
+        addItems(reviewList);
     }
 }

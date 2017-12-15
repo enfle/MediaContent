@@ -2,12 +2,15 @@ package com.km2labs.mediacontent.beans;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+import org.parceler.Transient;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/*@Parcel(value = Parcel.Serialization.FIELD,
-        analyze = {MovieDetailDto.class})*/
+@Parcel(value = Parcel.Serialization.FIELD,
+        analyze = {MovieDetailDto.class})
 public class MovieDetailDto {
 
     @SerializedName("adult")
@@ -16,6 +19,7 @@ public class MovieDetailDto {
     @SerializedName("backdrop_path")
     String backdropPath;
 
+    @Transient
     @SerializedName("belongs_to_collection")
     Map<String, Object> belongsToCollection;
 

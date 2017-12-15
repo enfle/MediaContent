@@ -30,8 +30,7 @@ public class Movie {
 
     @SerializedName("genre_ids")
     @Expose
-    // @ParcelPropertyConverter(RealmListParcelConverter.class)
-            List<Integer> genreIds = new ArrayList<>();
+    List<Integer> genreIds = new ArrayList<>();
 
     @SerializedName("id")
     @Expose

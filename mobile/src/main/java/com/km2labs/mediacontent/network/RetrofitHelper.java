@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.km2labs.mediacontent.BuildConfig;
 
 import java.io.IOException;
 
@@ -83,7 +84,7 @@ public class RetrofitHelper {
         Request original = chain.request();
         HttpUrl originalHttpUrl = original.url();
         HttpUrl url = originalHttpUrl.newBuilder()
-                //.addQueryParameter(API_KEY, BuildConfig.API_KEY)
+                .addQueryParameter(API_KEY, BuildConfig.API_KEY)
                 .build();
 
         // Request customization: add request headers

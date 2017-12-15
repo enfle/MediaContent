@@ -18,8 +18,7 @@ import io.reactivex.Observable;
  * Created on :  04/10/16.
  */
 
-public class ReviewFragmentPresenter extends BaseNetworkPresenter<ReviewFragmentContract.View>
-        implements ReviewFragmentContract.Presenter {
+public class ReviewFragmentPresenter extends BaseNetworkPresenter<ReviewFragmentContract.View> implements ReviewFragmentContract.Presenter {
 
     private MovieService mMovieService;
 
@@ -29,7 +28,6 @@ public class ReviewFragmentPresenter extends BaseNetworkPresenter<ReviewFragment
         super(dataCache);
         mMovieService = movieService;
     }
-
 
     @Override
     public void loadMovieReview(Integer movieId) {

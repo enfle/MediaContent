@@ -1,9 +1,11 @@
 package com.km2labs.mediacontent.service;
 
 
+import com.km2labs.mediacontent.beans.Images;
 import com.km2labs.mediacontent.beans.MovieDetailDto;
 import com.km2labs.mediacontent.beans.MovieListResponseDto;
 import com.km2labs.mediacontent.beans.Reviews;
+import com.km2labs.mediacontent.beans.Videos;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -38,9 +40,15 @@ public interface MovieService {
     @GET("movie/now_playing")
     Observable<MovieListResponseDto> getNowPlayingMovie(@Query("page") int pageCount);
 
-    @GET("movie/{id}")
-    Observable<MovieDetailDto> getMovieDetail(@Path("id") int movieId, @Query("append_to_response") String query);
+    @GET("movie/{movie_id}")
+    Observable<MovieDetailDto> getMovieDetail(@Path("movie_id") int movieId, @Query("append_to_response") String query);
 
-    @GET("movie/{id}/reviews")
-    Observable<Reviews> getMovieReviews(@Path("id") Integer movieId);
+    @GET("movie/{movie_id}/reviews")
+    Observable<Reviews> getMovieReviews(@Path("movie_id") Integer movieId);
+
+    @GET("movie/{movie_id}/videos")
+    Observable<Videos> getMovieVideos(@Path("movie_id") Integer mMovieId);
+
+    @GET("movie/{movie_id}/images")
+    Observable<Images> getMovieImages(@Path("movie_id") Integer mMovieId);
 }

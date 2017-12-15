@@ -25,16 +25,16 @@ public class MovieFragmentAdapter extends FragmentStatePagerAdapter {
                 type = MovieListType.NOW_PLAYING;
                 break;
             case 1:
-                type = MovieListType.LATEST;
+                type = MovieListType.UPCOMING;
                 break;
             case 2:
-                type = MovieListType.POPULAR;
+                type = MovieListType.LATEST;
                 break;
             case 3:
-                type = MovieListType.TOP_RATED;
+                type = MovieListType.POPULAR;
                 break;
             case 4:
-                type = MovieListType.UPCOMING;
+                type = MovieListType.TOP_RATED;
                 break;
             default:
                 type = MovieListType.NOW_PLAYING;
@@ -57,13 +57,13 @@ public class MovieFragmentAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return mContext.getString(R.string.now_playing);
             case 1:
-                return mContext.getString(R.string.latest);
-            case 2:
-                return mContext.getString(R.string.popular);
-            case 3:
-                return mContext.getString(R.string.top_rated);
-            case 4:
                 return mContext.getString(R.string.upcoming);
+            case 2:
+                return mContext.getString(R.string.latest);
+            case 3:
+                return mContext.getString(R.string.popular);
+            case 4:
+                return mContext.getString(R.string.top_rated);
             default:
                 return mContext.getString(R.string.now_playing);
         }

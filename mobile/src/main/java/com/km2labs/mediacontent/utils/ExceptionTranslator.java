@@ -20,6 +20,7 @@ public class ExceptionTranslator {
         if (throwable instanceof HttpException) {
             HttpException exception = (HttpException) throwable;
             int code = exception.code();
+            return true;
         } else if (throwable instanceof SocketTimeoutException) {
             return true;
         }

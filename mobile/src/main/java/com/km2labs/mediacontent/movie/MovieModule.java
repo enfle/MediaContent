@@ -1,6 +1,6 @@
 package com.km2labs.mediacontent.movie;
 
-import com.km2labs.mediacontent.dagger.scope.FragmentScope;
+import com.km2labs.mediacontent.dagger.scope.PerFragment;
 import com.km2labs.mediacontent.movie.list.MovieListFragment;
 import com.km2labs.mediacontent.movie.list.MovieListModule;
 
@@ -15,7 +15,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class MovieModule {
 
-    @FragmentScope
+    @PerFragment
     @ContributesAndroidInjector(modules = {MovieListModule.class})
     abstract public MovieListFragment movieListFragment();
 }

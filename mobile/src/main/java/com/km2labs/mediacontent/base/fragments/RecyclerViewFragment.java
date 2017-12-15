@@ -38,11 +38,16 @@ import butterknife.BindView;
 public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INetworkPresenter<V>> extends BaseNetworkFragment<V, P> {
 
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
+
     private static final int SPAN_COUNT = 2;
+
     protected LayoutManagerType mCurrentLayoutManagerType;
+
     @BindView(R.id.recycle_view)
     protected RecyclerView mRecyclerView;
+
     protected RecyclerAdapter mAdapter;
+
     protected RecyclerView.LayoutManager mLayoutManager;
 
     /*Abstract methods*/
@@ -81,7 +86,7 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
         }
         switch (layoutManagerType) {
             case GRID_LAYOUT_MANAGER:
-                mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
+                mLayoutManager = new GridLayoutManager(getActivity(), getSpanCount());
                 mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
                 break;
             case LINEAR_LAYOUT_MANAGER:
@@ -94,6 +99,10 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
         }
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.scrollToPosition(scrollPosition);
+    }
+
+    protected int getSpanCount() {
+        return SPAN_COUNT;
     }
 
     @Override
@@ -114,6 +123,10 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
 
     public void addItems(List<RecyclerItemView> recyclerItemViews) {
         mAdapter.addItems(recyclerItemViews);
+    }
+
+    public RecyclerView getRecyclerView() {
+        return mRecyclerView;
     }
 
     protected enum LayoutManagerType {

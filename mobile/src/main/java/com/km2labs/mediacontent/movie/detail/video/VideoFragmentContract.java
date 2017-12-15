@@ -3,6 +3,8 @@ package com.km2labs.mediacontent.movie.detail.video;
 import android.support.v7.widget.RecyclerView;
 
 import com.km2labs.mediacontent.base.adapter.RecyclerItemView;
+import com.km2labs.mediacontent.beans.Backdrop;
+import com.km2labs.mediacontent.beans.MovieDetailDto;
 import com.km2labs.mediacontent.mvp.ILoadingView;
 import com.km2labs.mediacontent.mvp.INetworkPresenter;
 
@@ -27,5 +29,9 @@ public interface VideoFragmentContract {
     interface Presenter extends INetworkPresenter<View> {
 
         void loadVideos(Integer movieId);
+
+        List<Backdrop> getBackdropList(MovieDetailDto movieDetailDto);
+
+        void loadVideos(MovieDetailDto movieDetailDto);
     }
 }

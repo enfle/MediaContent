@@ -3,23 +3,16 @@ package com.km2labs.mediacontent.movie.detail.video;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.km2labs.mediacontent.base.adapter.ItemizedRecyclerAdapter;
-import com.km2labs.mediacontent.base.adapter.RecyclerAdapter;
+import com.google.android.youtube.player.YouTubeIntents;
 import com.km2labs.mediacontent.base.adapter.RecyclerItemView;
 import com.km2labs.mediacontent.base.fragments.RecyclerViewFragment;
-import com.km2labs.mediacontent.beans.Backdrop;
 import com.km2labs.mediacontent.beans.Video;
-import com.km2labs.mediacontent.beans.Videos;
-
-import org.parceler.Parcels;
 
 import java.util.List;
-
-import io.reactivex.Observable;
 
 
 /**
@@ -29,18 +22,29 @@ import io.reactivex.Observable;
 
 public class VideoFragment extends RecyclerViewFragment<VideoFragmentContract.View, VideoFragmentContract.Presenter> implements VideoFragmentContract.View {
 
-    public static final String ARG_VIDEO_LIST = "Arg:Fragment:Movie:Video";
-    public static final String ARG_BACKDROP_LIST = "Arg:Fragment:Movie:Backdrop";
+    public static final String ARG_MOVIE_ID = "Args:Fragment:Movie:ID";
 
 
     @Override
-    protected RecyclerAdapter getAdapter() {
-        return new ItemizedRecyclerAdapter();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPresenter.onViewAttached(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mPresenter.onViewDetached();
     }
 
     @Override
     protected LayoutManagerType getLayoutManagerType() {
         return LayoutManagerType.GRID_LAYOUT_MANAGER;
+    }
+
+    @Override
+    protected int getSpanCount() {
+        return 3;
     }
 
     @Override
@@ -50,18 +54,8 @@ public class VideoFragment extends RecyclerViewFragment<VideoFragmentContract.Vi
             return;
         }
 
-        Videos videos = Parcels.unwrap((Parcelable) bundle.get(ARG_VIDEO_LIST));
-        List<Backdrop> backdrops = Parcels.unwrap((Parcelable) bundle.get(ARG_BACKDROP_LIST));
-        final int[] i = {0};
-        Observable.fromIterable(videos.getVideos()).forEach(video -> {
-            Backdrop backdrop = null;
-            backdrop = backdrops.get(i[0]++);
-
-            if (backdrops.size() <= i[0]) {
-                i[0] = 0;
-            }
-            new VideoRecyclerView(video, backdrop);
-        });
+        Integer moviId = bundle.getInt(ARG_MOVIE_ID);
+        mPresenter.loadVideos(moviId);
     }
 
     @Override
@@ -69,14 +63,19 @@ public class VideoFragment extends RecyclerViewFragment<VideoFragmentContract.Vi
         super.OnItemClicked(recyclerView, position, view);
         VideoRecyclerView item = mAdapter.getItem(position);
         Video video = item.getVideo();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https:www.youtube.com/watch?v=" + video.getKey()));
+        Intent intent;
+        if (YouTubeIntents.canResolvePlayVideoIntent(getContext())) {
+            intent = YouTubeIntents.createPlayVideoIntentWithOptions(getContext(), video.getKey(), true, false);
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https:www.youtube.com/watch?v=" + video.getKey()));
+        }
         startActivity(intent);
     }
 
     @Override
     public void showVideoList(List<RecyclerItemView> videos) {
-
+        addItems(videos);
     }
 
     @Override
@@ -85,42 +84,6 @@ public class VideoFragment extends RecyclerViewFragment<VideoFragmentContract.Vi
     }
 
     @Override
-    public RecyclerView getRecyclerView() {
-        return null;
-    }
-
-    @Override
-    public void onLoadingStart() {
-
-    }
-
-    @Override
-    public void onLoadingComplete(boolean success) {
-
-    }
-
-    @Override
-    public void showEmptyScreen() {
-
-    }
-
-    @Override
-    public void onNetworkError(String tag) {
-
-    }
-
-    @Override
     public void onError() {
-
-    }
-
-    @Override
-    public void onAuthenticationError(String tag) {
-
-    }
-
-    @Override
-    protected int getContentLayoutResId() {
-        return 0;
     }
 }

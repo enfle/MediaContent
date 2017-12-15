@@ -11,6 +11,8 @@ import com.km2labs.mediacontent.service.MovieService;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 
 
@@ -25,6 +27,7 @@ public class RecommendedFragmentPresenter extends BaseNetworkPresenter<Recommend
     private MovieService mMovieService;
     private int mMovieId;
 
+    @Inject
     public RecommendedFragmentPresenter(MovieService movieService, DataCache dataCache) {
         super(dataCache);
         mMovieService = movieService;

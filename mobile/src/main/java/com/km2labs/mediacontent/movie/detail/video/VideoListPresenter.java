@@ -5,6 +5,7 @@ import com.km2labs.mediacontent.beans.Backdrop;
 import com.km2labs.mediacontent.beans.Images;
 import com.km2labs.mediacontent.beans.MovieDetailDto;
 import com.km2labs.mediacontent.beans.Video;
+import com.km2labs.mediacontent.beans.Videos;
 import com.km2labs.mediacontent.cache.DataCache;
 import com.km2labs.mediacontent.mvp.BaseNetworkPresenter;
 import com.km2labs.mediacontent.service.MovieService;
@@ -43,7 +44,13 @@ public class VideoListPresenter extends BaseNetworkPresenter<VideoFragmentContra
 
     @Override
     protected Observable<MovieDetailDto> getApiObservable(String tag) {
-        return mMovieService.getMovieDetail(mMovieId, "videos,images");
+        return Observable.zip(mMovieService.getMovieVideos(mMovieId), mMovieService.getMovieImages(mMovieId), (videos, images) -> {
+            MovieDetailDto movieDetailDto = new MovieDetailDto();
+            movieDetailDto.setVideos(videos);
+            movieDetailDto.setImages(images);
+            movieDetailDto.setId(mMovieId);
+            return movieDetailDto;
+        });
     }
 
     @Override
@@ -73,19 +80,14 @@ public class VideoListPresenter extends BaseNetworkPresenter<VideoFragmentContra
 
     private Observable<List<RecyclerItemView>> getRecyclerItemObserver(MovieDetailDto movieDetailDto) {
         ArrayList<RecyclerItemView> itemViews = new ArrayList<>();
-        Images images = movieDetailDto.getImages();
-
-        List<Backdrop> backdrops = new ArrayList<>();
-        if (images != null)
-            backdrops = images.getBackdrops();
-
+        List<Backdrop> backdrops = getBackdropList(movieDetailDto);
         List<Video> videos = movieDetailDto.getVideos().getVideos();
-        movieDetailDto.getBackdropPath();
+
         Backdrop prePoster = new Backdrop();
         prePoster.setFilePath(movieDetailDto.getPosterPath());
         for (int i = 0; i < videos.size(); i++) {
             Video video = videos.get(i);
-            Backdrop backdrop = null;
+            Backdrop backdrop;
             if (i < backdrops.size()) {
                 backdrop = backdrops.get(i);
                 prePoster = backdrop;
@@ -97,6 +99,54 @@ public class VideoListPresenter extends BaseNetworkPresenter<VideoFragmentContra
         }
 
         return Observable.just(itemViews);
+    }
+
+    @Override
+    public List<Backdrop> getBackdropList(MovieDetailDto movieDetailDto) {
+        Images images = movieDetailDto.getImages();
+        List<Backdrop> backdropList = new ArrayList<>();
+
+        List<Video> videos = movieDetailDto.getVideos().getVideos();
+        List<Backdrop> backdrops = new ArrayList<>();
+
+        if (images != null)
+            backdrops = images.getBackdrops();
+
+        Backdrop prePoster = new Backdrop();
+        prePoster.setFilePath(movieDetailDto.getPosterPath());
+
+        for (int i = 0; i < videos.size(); i++) {
+            Backdrop backdrop;
+            if (i < backdrops.size()) {
+                backdrop = backdrops.get(i);
+                prePoster = backdrop;
+            } else {
+                backdrop = prePoster;
+            }
+            backdropList.add(backdrop);
+        }
+        return backdropList;
+    }
+
+    @Override
+    public void loadVideos(MovieDetailDto movieDetailDto) {
+        Videos videos = movieDetailDto.getVideos();
+        List<Backdrop> backdrops = getBackdropList(movieDetailDto);
+        List<RecyclerItemView> videoRecyclerViews = getItems(videos, backdrops);
+        getView().showVideoList((videoRecyclerViews));
+    }
+
+    private List<RecyclerItemView> getItems(Videos videos, List<Backdrop> backdrops) {
+        final int[] i = {0};
+        List<RecyclerItemView> videoRecyclerViews = new ArrayList<>();
+        Observable.fromIterable(videos.getVideos()).forEach(video -> {
+            Backdrop backdrop = backdrops.get(i[0]++);
+            if (backdrops.size() <= i[0]) {
+                i[0] = 0;
+            }
+            videoRecyclerViews.add(new VideoRecyclerView(video, backdrop));
+        });
+        return videoRecyclerViews;
     }
 
     @Override

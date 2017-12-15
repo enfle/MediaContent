@@ -5,7 +5,7 @@
     android:id="@+id/content_movie_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.km2labs.mediacontent.movie.detail.MovieDetailFragment">
+    tools:context="com.km2labs.mediacontent.movie.detail.MovieDetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -22,7 +22,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|snap">
 
             <ImageView
                 android:id="@+id/backdrop"

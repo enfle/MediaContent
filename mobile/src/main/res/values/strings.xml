@@ -11,15 +11,6 @@
     <string name="top_rated">Top RATED</string>
     <string name="now_playing">NOW PLAYING</string>
 
-    <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
-        cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss
-        bavarian
-        bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese
-        rubber
-        cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty
-        cheese
-        the big cheese.
-    </string>
     <string name="overview">Overview</string>
     <string name="video">Video</string>
     <string name="reviews">Reviews</string>
@@ -27,11 +18,15 @@
     <string name="request_failed">Request Failed</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="similar_movies">Similar Movies</string>
     <string name="recom_movies">Recommended Movies</string>
     <string name="text_movies">Movies</string>
     <string name="text_schedules">Tv Shows</string>
     <string name="favorite">Favourite</string>
     <string name="followers">Followers</string>
+
+    <string name="no_item_exists">No Item Exists</string>
+    <string name="error_user_uthenticaton_failed">You have been logged out. Please login again
+    </string>
+    <string name="login">Login</string>
 </resources>

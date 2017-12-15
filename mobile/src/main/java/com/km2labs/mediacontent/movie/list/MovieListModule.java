@@ -1,8 +1,8 @@
 package com.km2labs.mediacontent.movie.list;
 
 import com.km2labs.mediacontent.cache.DataCache;
-import com.km2labs.mediacontent.dagger.scope.ActivityScope;
 import com.km2labs.mediacontent.dagger.scope.InMemoryCache;
+import com.km2labs.mediacontent.dagger.scope.PerActivity;
 import com.km2labs.mediacontent.service.MovieService;
 
 import dagger.Module;
@@ -14,10 +14,10 @@ import dagger.Provides;
  */
 
 @Module
-public class MovieListModule  {
+public class MovieListModule {
 
     @Provides
-    @ActivityScope
+    @PerActivity
     public MovieListFragmentContract.Presenter provideMovieListPresenter(MovieService movieService, @InMemoryCache DataCache dataCache) {
         return new MovieListPresenter(movieService, dataCache);
     }

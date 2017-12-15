@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -140,9 +141,10 @@ public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INet
     }
 
     public void onAuthenticationError(String tag) {
-//        Snackbar.make(mRootView, R.string.error_user_uthenticaton_failed, Snackbar.LENGTH_INDEFINITE)
-//                .setAction(R.string.login, this::onLoginClicked)
-//                .show();
+        mMessageTextView.setVisibility(View.GONE);
+        Snackbar.make(mRootView, R.string.error_user_uthenticaton_failed, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.login, this::onLoginClicked)
+                .show();
     }
 
     private void onLoginClicked(View view) {
