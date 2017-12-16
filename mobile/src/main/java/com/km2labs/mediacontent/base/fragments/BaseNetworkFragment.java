@@ -129,9 +129,8 @@ public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INet
         return false;
     }
 
-
     public void showEmptyScreen() {
-        //mMessageTextView.setText(R.string.no_item_exists);
+        mMessageTextView.setText(R.string.no_item_exists);
         mMessageTextView.setVisibility(View.VISIBLE);
     }
 
@@ -151,7 +150,6 @@ public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INet
 //        Intent intent = new Intent(getActivity(), LoginActivity.class);
 //        intent.putExtra(LoginActivity.LAUNCHER_ACTIVITY_NAME, getActivity().getClass().getName());
 //        startActivity(intent);
-
     }
 
     public void onNetworkError(String tag) {

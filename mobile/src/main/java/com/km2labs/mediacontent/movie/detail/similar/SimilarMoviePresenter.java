@@ -35,6 +35,7 @@ public class SimilarMoviePresenter extends BaseNetworkPresenter<SimilarMovieCont
     @Override
     public void getSimilarMovies(Integer movieId) {
         mMovieId = movieId;
+        startRequest();
     }
 
     private Observable<List<RecyclerItemView>> getViewItemObservable(MovieListResponseDto moviesListResponseData) {

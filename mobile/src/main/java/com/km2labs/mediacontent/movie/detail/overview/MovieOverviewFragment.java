@@ -56,13 +56,13 @@ public class MovieOverviewFragment extends BaseNetworkFragment<OverviewFragmentC
         Bundle bundle = new Bundle();
         bundle.putInt(SimilarMovieFragment.ARG_MOVIE_ID, mMovieId);
         similarMovieFragment.setArguments(bundle);
-        getFragmentManager().beginTransaction().add(R.id.similar_movie_container, similarMovieFragment).commit();
+        getChildFragmentManager().beginTransaction().add(R.id.similar_movie_container, similarMovieFragment).commit();
 
         RecommendedMovieFragment recommendedMovieFragment = new RecommendedMovieFragment();
         Bundle recBundle = new Bundle();
         recBundle.putInt(RecommendedMovieFragment.ARG_MOVIE_ID, mMovieId);
         recommendedMovieFragment.setArguments(recBundle);
-        getFragmentManager().beginTransaction().add(R.id.recommended_movie_container, recommendedMovieFragment).commit();
+        getChildFragmentManager().beginTransaction().add(R.id.recommended_movie_container, recommendedMovieFragment).commit();
     }
 
     @Override

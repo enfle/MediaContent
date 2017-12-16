@@ -81,13 +81,19 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
 
     private void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
         int scrollPosition = 0;
+
         if (mRecyclerView.getLayoutManager() != null) {
             scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
         }
+
         switch (layoutManagerType) {
             case GRID_LAYOUT_MANAGER:
                 mLayoutManager = new GridLayoutManager(getActivity(), getSpanCount());
                 mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
+                break;
+            case HORIZONTAL_LINEAR_LAYOUT_MANAGER:
+                mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
                 break;
             case LINEAR_LAYOUT_MANAGER:
                 mLayoutManager = new LinearLayoutManager(getActivity());
@@ -134,5 +140,4 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
         HORIZONTAL_LINEAR_LAYOUT_MANAGER,
         LINEAR_LAYOUT_MANAGER
     }
-
 }
