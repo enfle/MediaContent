@@ -9,6 +9,7 @@
         android:id="@+id/backdrop"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:contentDescription="@string/video_poster"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/ic_placeholder_images" />
 
@@ -16,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:contentDescription="@string/video_indicator"
         app:srcCompat="@drawable/ic_play_circle_filled_white_24dp" />
 
 </FrameLayout>

@@ -4,6 +4,8 @@ import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Property;
 import android.view.View;
@@ -60,6 +62,7 @@ public class DotsView extends View {
         init();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public DotsView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
