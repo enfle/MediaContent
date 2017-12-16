@@ -11,7 +11,7 @@ repositories {
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.km2labs.mediacontent"
+        applicationId "com.enfle.android.mediacontent"
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 2
@@ -29,9 +29,6 @@ android {
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
-    }
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 

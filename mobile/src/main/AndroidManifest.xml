@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.km2labs.mediacontent">
+    package="com.enfle.android.mediacontent">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name="com.km2labs.mediacontent.movie.detail.MovieDetailActivity"
+            android:name=".movie.detail.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
             android:theme="@style/AppTheme.NoActionBar"/>
 

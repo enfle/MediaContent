@@ -1,0 +1,159 @@
+package com.enfle.android.mediacontent.base.fragments;
+
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.enfle.android.mediacontent.R;
+import com.enfle.android.mediacontent.mvp.ILoadingView;
+import com.enfle.android.mediacontent.mvp.INetworkPresenter;
+import com.enfle.android.mediacontent.views.DotsView;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+import static com.enfle.android.mediacontent.R.id.message;
+
+/**
+ * Created by : Subham Tyagi
+ * Created on :  28/08/16.
+ */
+
+public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INetworkPresenter<V>>
+        extends DaggerFragment<V, P> implements SwipeRefreshLayout.OnRefreshListener {
+
+    private static final AccelerateDecelerateInterpolator ACCELERATE_DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
+
+    protected View mRootView;
+
+    @BindView(R.id.progress_bar)
+    DotsView mProgressBar;
+
+    @BindView(message)
+    TextView mMessageTextView;
+
+    @BindView(R.id.retry_button)
+    Button mRetryButton;
+
+    @LayoutRes
+    protected abstract int getContentLayoutResId();
+
+    protected abstract void loadData();
+
+    @Override
+    protected final View getFragmentView(LayoutInflater inflater, ViewGroup container) {
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.loading_fragment, container, false);
+        View contentView = inflater.inflate(getContentLayoutResId(), container, false);
+
+        if (contentView == null) {
+            return viewGroup;
+        }
+
+        if (enablePullToRefresh()) {
+            setRefreshLayout(contentView, viewGroup);
+        } else {
+            viewGroup.addView(contentView);
+        }
+        mRootView = viewGroup;
+        return mRootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        loadData();
+    }
+
+    private void setRefreshLayout(View contentView, ViewGroup viewGroup) {
+        SwipeRefreshLayout swipeRefreshLayout = new SwipeRefreshLayout(getContext());
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(viewGroup.getLayoutParams());
+        swipeRefreshLayout.setLayoutParams(layoutParams);
+        viewGroup.addView(swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.addView(contentView);
+    }
+
+    public void onLoadingStart() {
+        ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(mProgressBar, DotsView.DOTS_PROGRESS, 0, 1f);
+        dotsAnimator.setDuration(900);
+        dotsAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        dotsAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        dotsAnimator.setInterpolator(ACCELERATE_DECELERATE_INTERPOLATOR);
+        dotsAnimator.start();
+        mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setCurrentProgress(0);
+    }
+
+    public void onLoadingComplete(boolean isSuccess) {
+        onLoadingComplete(isSuccess, null);
+    }
+
+    private void onLoadingComplete(boolean isSuccess, String requestTag) {
+        mProgressBar.setVisibility(View.GONE);
+        mRetryButton.setVisibility(isSuccess ? View.GONE : View.VISIBLE);
+        mMessageTextView.setVisibility(isSuccess ? View.GONE : View.VISIBLE);
+        mRetryButton.setTag(requestTag);
+    }
+
+    public void setMessage(@StringRes int id) {
+        mMessageTextView.setVisibility(View.VISIBLE);
+        mMessageTextView.setText(id);
+    }
+
+    @OnClick(R.id.retry_button)
+    protected void onRetryClicked(View view) {
+        if (view != null) {
+            String requestTag = (String) view.getTag();
+            if (!TextUtils.isEmpty(requestTag)) {
+                mPresenter.startRequest(requestTag);
+            } else {
+                loadData();
+            }
+        }
+
+    }
+
+    protected boolean enablePullToRefresh() {
+        return false;
+    }
+
+    public void showEmptyScreen() {
+        mMessageTextView.setText(R.string.no_item_exists);
+        mMessageTextView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onRefresh() {
+
+    }
+
+    public void onAuthenticationError(String tag) {
+        mMessageTextView.setVisibility(View.GONE);
+        Snackbar.make(mRootView, R.string.error_user_uthenticaton_failed, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.login, this::onLoginClicked)
+                .show();
+    }
+
+    private void onLoginClicked(View view) {
+//        Intent intent = new Intent(getActivity(), LoginActivity.class);
+//        intent.putExtra(LoginActivity.LAUNCHER_ACTIVITY_NAME, getActivity().getClass().getName());
+//        startActivity(intent);
+    }
+
+    public void onNetworkError(String tag) {
+        setMessage(R.string.request_failed);
+        onLoadingComplete(false);
+    }
+}

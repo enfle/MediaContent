@@ -1,4 +1,4 @@
-package com.km2labs.framework.cache;
+package com.android.framework.cache;
 
 import android.text.TextUtils;
 

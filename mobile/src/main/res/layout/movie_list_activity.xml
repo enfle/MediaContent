@@ -5,7 +5,7 @@
     android:id="@+id/activity_welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.km2labs.mediacontent.movie.list.MovieListActivity">
+    tools:context=".movie.list.MovieListActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
