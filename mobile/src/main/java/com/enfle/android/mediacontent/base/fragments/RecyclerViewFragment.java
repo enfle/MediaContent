@@ -53,7 +53,40 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
     /*Abstract methods*/
     abstract protected LayoutManagerType getLayoutManagerType();
 
+    /**
+     * Will be called when fragment is ready to load data
+     */
     protected abstract void onLoadData();
+
+    /**
+     * If Default implementation need to be overridden then override this method and provide custom implementation
+     *
+     * @return - #{@RecyclerAdapter}
+     */
+    protected RecyclerAdapter getAdapter() {
+        return new ItemizedRecyclerAdapter();
+    }
+
+    /**
+     * Will be called when any item of recycler view has been clicked
+     *
+     * @param recyclerView @{RecyclerView}
+     * @param position     - Item position
+     * @param view-        view which has been clicked
+     */
+    protected void OnItemClicked(RecyclerView recyclerView, int position, View view) {
+    }
+
+    @Override
+    final protected void loadData() {
+        onLoadData();
+    }
+
+    @Override
+    protected int getContentLayoutResId() {
+        return R.layout.recycler_view;
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -69,14 +102,6 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
         mAdapter = getAdapter();
         mRecyclerView.setAdapter(mAdapter);
         ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(this::OnItemClicked);
-    }
-
-    protected RecyclerAdapter getAdapter() {
-        return new ItemizedRecyclerAdapter();
-    }
-
-    protected void OnItemClicked(RecyclerView recyclerView, int position, View view) {
-
     }
 
     private void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
@@ -102,6 +127,7 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
             default:
                 mLayoutManager = new LinearLayoutManager(getActivity());
                 mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+                break;
         }
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.scrollToPosition(scrollPosition);
@@ -115,16 +141,6 @@ public abstract class RecyclerViewFragment<V extends ILoadingView, P extends INe
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
-    }
-
-    @Override
-    final protected void loadData() {
-        onLoadData();
-    }
-
-    @Override
-    protected int getContentLayoutResId() {
-        return R.layout.recycler_view;
     }
 
     public void addItems(List<RecyclerItemView> recyclerItemViews) {

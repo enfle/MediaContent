@@ -17,7 +17,7 @@ import io.reactivex.Observable;
 
 public class MovieDetailPresenter extends BaseNetworkPresenter<MovieDetailContract.View> implements MovieDetailContract.Presenter {
 
-    private MovieService mMovieService;
+    private final MovieService mMovieService;
 
     private int mMovieId;
 
@@ -55,7 +55,6 @@ public class MovieDetailPresenter extends BaseNetworkPresenter<MovieDetailContra
 
     @Override
     public void onDestroy() {
-
     }
 
 }

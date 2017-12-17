@@ -38,10 +38,6 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
     @Inject
     MovieDetailContract.Presenter mPresenter;
 
-    private MovieDetailFragmentPagerAdapter mAdapter;
-
-    private MovieDetailDto mMovieDetailDto;
-
     private Movie mMovie;
 
     @Override
@@ -50,10 +46,10 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
         setContentView(R.layout.movie_detail_activity);
         ButterKnife.bind(this);
         mMovie = Parcels.unwrap(getIntent().getParcelableExtra(ARG_MOVIE));
-        mAdapter = new MovieDetailFragmentPagerAdapter(this, getSupportFragmentManager());
-        mAdapter.setMovieId(mMovie.getId());
+        MovieDetailFragmentPagerAdapter adapter = new MovieDetailFragmentPagerAdapter(this, getSupportFragmentManager());
+        adapter.setMovieId(mMovie.getId());
         mTablayout.setupWithViewPager(mViewPager, true);
-        mViewPager.setAdapter(mAdapter);
+        mViewPager.setAdapter(adapter);
         String imagePath = mMovie.getBackdropPath();
         Picasso.with(mBackdrop.getContext())
                 .load("http://image.tmdb.org/t/p/w500" + imagePath)

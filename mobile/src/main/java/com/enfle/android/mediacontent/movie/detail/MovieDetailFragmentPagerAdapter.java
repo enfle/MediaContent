@@ -19,20 +19,14 @@ import com.enfle.android.mediacontent.movie.detail.video.VideoFragment;
 
 public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
-    private Context mContext;
+    private final Context mContext;
 
-    private MovieDetailDto mMovieDetailDto;
     private Integer movieId;
 
-    public MovieDetailFragmentPagerAdapter(Context context, FragmentManager fm) {
+    MovieDetailFragmentPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
-
-    public void setMovieDetailDto(MovieDetailDto movieDetailDto) {
-        mMovieDetailDto = movieDetailDto;
-    }
-
 
     public void setMovieId(Integer movieId) {
         this.movieId = movieId;

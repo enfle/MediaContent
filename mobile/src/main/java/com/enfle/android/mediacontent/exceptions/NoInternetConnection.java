@@ -10,9 +10,6 @@ import android.support.annotation.RequiresApi;
 
 public class NoInternetConnection extends RuntimeException {
 
-    public NoInternetConnection() {
-    }
-
     public NoInternetConnection(String message) {
         super(message);
     }

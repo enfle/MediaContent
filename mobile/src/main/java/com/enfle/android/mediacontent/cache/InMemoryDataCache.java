@@ -16,10 +16,7 @@ import io.reactivex.Observable;
 public class InMemoryDataCache implements DataCache {
 
     private final AtomicLong NEXT_ID = new AtomicLong(100L);
-    private ConcurrentHashMap<String, Object> mCache = new ConcurrentHashMap<>();
-
-    public InMemoryDataCache() {
-    }
+    private final ConcurrentHashMap<String, Object> mCache = new ConcurrentHashMap<>();
 
     @Override
     public <T> void put(String key, T data) {

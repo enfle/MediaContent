@@ -1,7 +1,5 @@
 package com.enfle.android.mediacontent.base.fragments;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -12,7 +10,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,6 +20,7 @@ import com.enfle.android.mediacontent.views.DotsView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.Optional;
 
 import static com.enfle.android.mediacontent.R.id.message;
 
@@ -34,23 +32,73 @@ import static com.enfle.android.mediacontent.R.id.message;
 public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INetworkPresenter<V>>
         extends DaggerFragment<V, P> implements SwipeRefreshLayout.OnRefreshListener {
 
-    private static final AccelerateDecelerateInterpolator ACCELERATE_DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
-
     protected View mRootView;
 
     @BindView(R.id.progress_bar)
+    @Nullable
     DotsView mProgressBar;
 
     @BindView(message)
+    @Nullable
     TextView mMessageTextView;
 
     @BindView(R.id.retry_button)
+    @Nullable
     Button mRetryButton;
 
+    /**
+     * Abstraction method how content view will be rendered
+     *
+     * @return - should return content view layout id
+     */
     @LayoutRes
     protected abstract int getContentLayoutResId();
 
+    /**
+     * Will be called when fragment is ready to load data
+     */
     protected abstract void loadData();
+
+    /**
+     * enable/disable pull to refresh
+     *
+     * @return true -if pull to refresh is enabled otherwise false
+     */
+    protected boolean enablePullToRefresh() {
+        return false;
+    }
+
+    /**
+     * Will be called when pull to refresh action triggered
+     */
+    @Override
+    public void onRefresh() {
+    }
+
+    /**
+     * Handle authentication error. Will be called by presenter when some auth failed
+     * i.e no internet connection
+     */
+    public void onAuthenticationError(String tag) {
+        mMessageTextView.setVisibility(View.GONE);
+        Snackbar.make(mRootView, R.string.error_user_uthenticaton_failed, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.login, v -> onLoginClicked())
+                .show();
+    }
+
+    /**
+     * Handle all type network error. Will be called by presenter when some network error happened
+     * i.e no internet connection
+     */
+    public void onNetworkError(String tag) {
+        setMessage(R.string.request_failed);
+        onLoadingComplete(false);
+    }
+
+    public void showEmptyScreen() {
+        mMessageTextView.setText(R.string.no_item_exists);
+        mMessageTextView.setVisibility(View.VISIBLE);
+    }
 
     @Override
     protected final View getFragmentView(LayoutInflater inflater, ViewGroup container) {
@@ -86,14 +134,9 @@ public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INet
     }
 
     public void onLoadingStart() {
-        ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(mProgressBar, DotsView.DOTS_PROGRESS, 0, 1f);
-        dotsAnimator.setDuration(900);
-        dotsAnimator.setRepeatMode(ValueAnimator.REVERSE);
-        dotsAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        dotsAnimator.setInterpolator(ACCELERATE_DECELERATE_INTERPOLATOR);
-        dotsAnimator.start();
-        mProgressBar.setVisibility(View.VISIBLE);
-        mProgressBar.setCurrentProgress(0);
+        if (mProgressBar != null) {
+            mProgressBar.start();
+        }
     }
 
     public void onLoadingComplete(boolean isSuccess) {
@@ -101,59 +144,45 @@ public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INet
     }
 
     private void onLoadingComplete(boolean isSuccess, String requestTag) {
-        mProgressBar.setVisibility(View.GONE);
-        mRetryButton.setVisibility(isSuccess ? View.GONE : View.VISIBLE);
-        mMessageTextView.setVisibility(isSuccess ? View.GONE : View.VISIBLE);
-        mRetryButton.setTag(requestTag);
+        if (mProgressBar != null) {
+            mProgressBar.stop();
+            mProgressBar.setVisibility(View.GONE);
+        }
+
+        if (mMessageTextView != null) {
+            mMessageTextView.setVisibility(isSuccess ? View.GONE : View.VISIBLE);
+        }
+
+        if (mRetryButton != null) {
+            mRetryButton.setVisibility(isSuccess ? View.GONE : View.VISIBLE);
+            mRetryButton.setTag(requestTag);
+        }
     }
 
     public void setMessage(@StringRes int id) {
-        mMessageTextView.setVisibility(View.VISIBLE);
-        mMessageTextView.setText(id);
+        if (mMessageTextView != null) {
+            mMessageTextView.setVisibility(View.VISIBLE);
+            mMessageTextView.setText(id);
+        }
     }
 
+    @Optional
     @OnClick(R.id.retry_button)
     protected void onRetryClicked(View view) {
-        if (view != null) {
-            String requestTag = (String) view.getTag();
-            if (!TextUtils.isEmpty(requestTag)) {
-                mPresenter.startRequest(requestTag);
-            } else {
-                loadData();
-            }
+        if (view == null) {
+            loadData();
+            return;
         }
 
+        String requestTag = (String) view.getTag();
+        if (TextUtils.isEmpty(requestTag)) {
+            loadData();
+        } else {
+            mPresenter.startRequest(requestTag);
+        }
     }
 
-    protected boolean enablePullToRefresh() {
-        return false;
-    }
-
-    public void showEmptyScreen() {
-        mMessageTextView.setText(R.string.no_item_exists);
-        mMessageTextView.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    public void onAuthenticationError(String tag) {
-        mMessageTextView.setVisibility(View.GONE);
-        Snackbar.make(mRootView, R.string.error_user_uthenticaton_failed, Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.login, this::onLoginClicked)
-                .show();
-    }
-
-    private void onLoginClicked(View view) {
-//        Intent intent = new Intent(getActivity(), LoginActivity.class);
-//        intent.putExtra(LoginActivity.LAUNCHER_ACTIVITY_NAME, getActivity().getClass().getName());
-//        startActivity(intent);
-    }
-
-    public void onNetworkError(String tag) {
-        setMessage(R.string.request_failed);
-        onLoadingComplete(false);
+    private void onLoginClicked() {
+        // TODO: 17/12/17 Handle login flow
     }
 }

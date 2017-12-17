@@ -14,7 +14,8 @@ public class ItemClickSupport {
     private OnItemLongClickListener mOnItemLongClickListener;
 
 
-    private RecyclerView.OnChildAttachStateChangeListener mAttachListener = new RecyclerView.OnChildAttachStateChangeListener() {
+    private final RecyclerView.OnChildAttachStateChangeListener mAttachListener = new RecyclerView.OnChildAttachStateChangeListener() {
+
         @Override
         public void onChildViewAttachedToWindow(View view) {
             if (mOnItemClickListener != null) {
@@ -27,7 +28,8 @@ public class ItemClickSupport {
 
         @Override
         public void onChildViewDetachedFromWindow(View view) {
-
+            view.setOnClickListener(null);
+            view.setOnLongClickListener(null);
         }
 
         private void onClick(View view) {

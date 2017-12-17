@@ -1,6 +1,8 @@
 package com.enfle.android.mediacontent.views;
 
 import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -9,6 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Property;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.enfle.android.mediacontent.utils.Utils;
 
@@ -16,6 +19,7 @@ import com.enfle.android.mediacontent.utils.Utils;
  * Created by Miroslaw Stanek on 20.12.2015.
  */
 public class DotsView extends View {
+    private static final AccelerateDecelerateInterpolator ACCELERATE_DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
     private static final int DOTS_COUNT = 7;
     private static final int OUTER_DOTS_POSITION_ANGLE = 360 / DOTS_COUNT;
 
@@ -46,6 +50,8 @@ public class DotsView extends View {
     private float currentDotSize2 = 0;
     private float currentRadius2 = 0;
     private ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+
+    private ObjectAnimator mObjectAnimator;
 
     public DotsView(Context context) {
         super(context);
@@ -176,5 +182,22 @@ public class DotsView extends View {
         circlePaints[1].setAlpha(alpha);
         circlePaints[2].setAlpha(alpha);
         circlePaints[3].setAlpha(alpha);
+    }
+
+    public void start() {
+        mObjectAnimator = ObjectAnimator.ofFloat(this, DotsView.DOTS_PROGRESS, 0, 1f);
+        mObjectAnimator.setDuration(900);
+        mObjectAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        mObjectAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        mObjectAnimator.setInterpolator(ACCELERATE_DECELERATE_INTERPOLATOR);
+        mObjectAnimator.start();
+        setVisibility(View.VISIBLE);
+        setCurrentProgress(0);
+    }
+
+    public void stop() {
+        if (mObjectAnimator != null) {
+            mObjectAnimator.cancel();
+        }
     }
 }

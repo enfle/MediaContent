@@ -45,8 +45,9 @@ public abstract class RecyclerAdapter extends RecyclerView.Adapter {
     }
 
     private void computeViewType() {
-        if (mItems == null || CollectionUtils.isEmpty(mItems))
+        if (mItems == null || CollectionUtils.isEmpty(mItems)) {
             return;
+        }
 
         for (RecyclerItemView recyclableViewItem : mItems) {
             Class classs = recyclableViewItem.getClass();

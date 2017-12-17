@@ -9,8 +9,6 @@ import io.reactivex.Observable;
  */
 public class PersistenceDataCache implements DataCache {
 
-    public PersistenceDataCache() {
-    }
 
     @Override
     public <T> void put(String key, T data) {

@@ -27,7 +27,7 @@ public class VideoListPresenter extends BaseNetworkPresenter<VideoFragmentContra
 
     private static final int LIMIT = 20;
 
-    private MovieService mMovieService;
+    private final MovieService mMovieService;
 
     private Integer mMovieId;
 
