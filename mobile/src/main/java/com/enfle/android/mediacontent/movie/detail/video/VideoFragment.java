@@ -7,9 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.enfle.android.mediacontent.base.fragments.DaggerRecyclerViewFragment;
+import com.enfle.android.mediacontent.base.fragments.LayoutManagerType;
 import com.google.android.youtube.player.YouTubeIntents;
 import com.enfle.android.mediacontent.base.adapter.RecyclerItemView;
-import com.enfle.android.mediacontent.base.fragments.RecyclerViewFragment;
 import com.enfle.android.mediacontent.beans.Video;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
  * Created on :  31/08/16.
  */
 
-public class VideoFragment extends RecyclerViewFragment<VideoFragmentContract.View, VideoFragmentContract.Presenter> implements VideoFragmentContract.View {
+public class VideoFragment extends DaggerRecyclerViewFragment<VideoFragmentContract.View, VideoFragmentContract.Presenter> implements VideoFragmentContract.View {
 
     public static final String ARG_MOVIE_ID = "Args:Fragment:Movie:ID";
 
@@ -48,7 +49,7 @@ public class VideoFragment extends RecyclerViewFragment<VideoFragmentContract.Vi
     }
 
     @Override
-    protected void onLoadData() {
+    protected void loadData() {
         Bundle bundle = getArguments();
         if (bundle == null) {
             return;

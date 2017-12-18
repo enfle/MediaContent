@@ -21,9 +21,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.enfle.android.mediacontent.R;
 import com.enfle.android.mediacontent.base.adapter.ItemizedRecyclerAdapter;
@@ -35,7 +33,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public abstract class RecyclerViewFragment extends BaseFragment {
+public abstract class RecyclerViewNetworkFragment extends BaseNetworkFragment {
 
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
 
@@ -52,6 +50,7 @@ public abstract class RecyclerViewFragment extends BaseFragment {
 
     /*Abstract methods*/
     abstract protected LayoutManagerType getLayoutManagerType();
+
 
     /**
      * If Default implementation need to be overridden then override this method and provide custom implementation
@@ -73,9 +72,10 @@ public abstract class RecyclerViewFragment extends BaseFragment {
     }
 
     @Override
-    protected View getFragmentView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.recycler_view, container, false);
+    protected int getContentLayoutResId() {
+        return R.layout.recycler_view;
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -139,4 +139,6 @@ public abstract class RecyclerViewFragment extends BaseFragment {
     public RecyclerView getRecyclerView() {
         return mRecyclerView;
     }
+
+
 }

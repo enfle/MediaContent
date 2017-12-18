@@ -20,7 +20,7 @@ import dagger.android.support.AndroidSupportInjection;
  * Created on :  13/09/16.
  */
 
-public abstract class DaggerFragment<V extends IView, P extends IPresenter<V>> extends BaseNetworkFragment {
+public abstract class DaggerRecyclerViewFragment<V extends IView, P extends IPresenter<V>> extends RecyclerViewNetworkFragment {
 
     @Inject
     protected P mPresenter;

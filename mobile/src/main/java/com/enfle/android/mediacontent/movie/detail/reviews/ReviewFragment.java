@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.enfle.android.mediacontent.base.fragments.DaggerRecyclerViewFragment;
+import com.enfle.android.mediacontent.base.fragments.LayoutManagerType;
 import com.enfle.android.mediacontent.base.adapter.RecyclerItemView;
-import com.enfle.android.mediacontent.base.fragments.RecyclerViewFragment;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * Created on :  31/08/16.
  */
 
-public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.View, ReviewFragmentContract.Presenter> implements ReviewFragmentContract.View {
+public class ReviewFragment extends DaggerRecyclerViewFragment<ReviewFragmentContract.View, ReviewFragmentContract.Presenter> implements ReviewFragmentContract.View {
 
     public static final String ARG_MOVIE_ID = "Arg:Fragment:Movie:ID";
 
@@ -38,7 +39,7 @@ public class ReviewFragment extends RecyclerViewFragment<ReviewFragmentContract.
     }
 
     @Override
-    protected void onLoadData() {
+    protected void loadData() {
         mMovieId = getArguments().getInt(ARG_MOVIE_ID);
         mPresenter.loadMovieReview(mMovieId);
     }

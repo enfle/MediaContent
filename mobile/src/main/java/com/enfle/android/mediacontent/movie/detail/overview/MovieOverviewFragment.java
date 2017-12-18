@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.enfle.android.mediacontent.R;
-import com.enfle.android.mediacontent.base.fragments.BaseNetworkFragment;
+import com.enfle.android.mediacontent.base.fragments.DaggerFragment;
 import com.enfle.android.mediacontent.beans.MovieDetailDto;
 import com.enfle.android.mediacontent.movie.detail.recomnded.RecommendedMovieFragment;
 import com.enfle.android.mediacontent.movie.detail.similar.SimilarMovieFragment;
@@ -24,7 +24,7 @@ import dagger.android.support.HasSupportFragmentInjector;
  * Created on :  31/08/16.
  */
 
-public class MovieOverviewFragment extends BaseNetworkFragment<OverviewFragmentContract.View, OverviewFragmentContract.Presenter>
+public class MovieOverviewFragment extends DaggerFragment<OverviewFragmentContract.View, OverviewFragmentContract.Presenter>
         implements OverviewFragmentContract.View, HasSupportFragmentInjector {
 
     public static final String ARG_MOVIE_ID = "Args:Fragment:Movie:Detail";
@@ -75,7 +75,6 @@ public class MovieOverviewFragment extends BaseNetworkFragment<OverviewFragmentC
     protected int getContentLayoutResId() {
         return R.layout.movie_detail_overview_fragment;
     }
-
 
     @Override
     protected void loadData() {

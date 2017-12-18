@@ -44,7 +44,7 @@ public class OverviewFragmentPresenter extends BaseNetworkPresenter<OverviewFrag
 
     @Override
     protected Observable<?> getApiObservable(String tag) {
-        return mMovieService.getMovieDetail(mMovieId, null);
+        return mMovieService.getMovieDetail(mMovieId, "similar,recommendations,credits");
     }
 
     @Override

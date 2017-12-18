@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.enfle.android.mediacontent.R;
-import com.enfle.android.mediacontent.beans.MovieDetailDto;
 import com.enfle.android.mediacontent.movie.detail.overview.MovieOverviewFragment;
 import com.enfle.android.mediacontent.movie.detail.reviews.ReviewFragment;
 import com.enfle.android.mediacontent.movie.detail.video.VideoFragment;

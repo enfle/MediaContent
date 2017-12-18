@@ -14,8 +14,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.enfle.android.mediacontent.R;
-import com.enfle.android.mediacontent.mvp.ILoadingView;
-import com.enfle.android.mediacontent.mvp.INetworkPresenter;
 import com.enfle.android.mediacontent.views.DotsView;
 
 import butterknife.BindView;
@@ -29,8 +27,7 @@ import static com.enfle.android.mediacontent.R.id.message;
  * Created on :  28/08/16.
  */
 
-public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INetworkPresenter<V>>
-        extends DaggerFragment<V, P> implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseNetworkFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     protected View mRootView;
 
@@ -178,7 +175,8 @@ public abstract class BaseNetworkFragment<V extends ILoadingView, P extends INet
         if (TextUtils.isEmpty(requestTag)) {
             loadData();
         } else {
-            mPresenter.startRequest(requestTag);
+            // TODO Handle retry
+            //mPresenter.startRequest(requestTag);
         }
     }
 

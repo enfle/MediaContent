@@ -8,7 +8,7 @@ import com.enfle.android.mediacontent.base.fragments.BaseNetworkFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SplashFragment extends BaseNetworkFragment<SplashFragmentContract.View, SplashFragmentContract.Presenter>
+public class SplashFragment extends BaseNetworkFragment
         implements SplashFragmentContract.View {
 
     @Override
@@ -18,9 +18,7 @@ public class SplashFragment extends BaseNetworkFragment<SplashFragmentContract.V
 
     @Override
     protected void loadData() {
-        mPresenter.performGuestLogin();
     }
-
 
     @Override
     public void onError() {

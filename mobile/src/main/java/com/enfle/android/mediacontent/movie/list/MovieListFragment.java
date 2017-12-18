@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.enfle.android.mediacontent.base.fragments.DaggerRecyclerViewFragment;
+import com.enfle.android.mediacontent.base.fragments.LayoutManagerType;
 import com.enfle.android.mediacontent.base.adapter.ItemizedRecyclerAdapter;
 import com.enfle.android.mediacontent.base.adapter.RecyclerAdapter;
 import com.enfle.android.mediacontent.base.adapter.RecyclerItemView;
-import com.enfle.android.mediacontent.base.fragments.RecyclerViewFragment;
 import com.enfle.android.mediacontent.beans.Movie;
 import com.enfle.android.mediacontent.movie.detail.MovieDetailActivity;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * Created on :  28/08/16.
  */
 
-public class MovieListFragment extends RecyclerViewFragment<MovieListFragmentContract.View, MovieListPresenter> implements MovieListFragmentContract.View {
+public class MovieListFragment extends DaggerRecyclerViewFragment<MovieListFragmentContract.View, MovieListPresenter> implements MovieListFragmentContract.View {
 
     public static final String ARG_MOVIE_LIST_TYPE = "Args:Fragment:Movie:List:MovieType";
 
@@ -31,12 +32,12 @@ public class MovieListFragment extends RecyclerViewFragment<MovieListFragmentCon
     }
 
     @Override
-    protected RecyclerViewFragment.LayoutManagerType getLayoutManagerType() {
+    protected LayoutManagerType getLayoutManagerType() {
         return LayoutManagerType.LINEAR_LAYOUT_MANAGER;
     }
 
     @Override
-    protected void onLoadData() {
+    protected void loadData() {
         Bundle bundle = getArguments();
         if (bundle == null) {
             showEmptyScreen();
@@ -67,15 +68,9 @@ public class MovieListFragment extends RecyclerViewFragment<MovieListFragmentCon
         startActivity(intent);
     }
 
-
     @Override
     public void onError() {
 
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 
     @Override

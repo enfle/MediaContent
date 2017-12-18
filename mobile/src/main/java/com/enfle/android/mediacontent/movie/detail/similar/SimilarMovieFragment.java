@@ -7,7 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.enfle.android.mediacontent.base.adapter.RecyclerItemView;
-import com.enfle.android.mediacontent.base.fragments.RecyclerViewFragment;
+import com.enfle.android.mediacontent.base.fragments.DaggerRecyclerViewFragment;
+import com.enfle.android.mediacontent.base.fragments.LayoutManagerType;
 import com.enfle.android.mediacontent.beans.Movie;
 import com.enfle.android.mediacontent.movie.detail.MovieDetailActivity;
 import com.enfle.android.mediacontent.movie.list.MovieGridViewItem;
@@ -16,7 +17,7 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
-public class SimilarMovieFragment extends RecyclerViewFragment<SimilarMovieContract.View, SimilarMovieContract.Presenter> implements SimilarMovieContract.View {
+public class SimilarMovieFragment extends DaggerRecyclerViewFragment<SimilarMovieContract.View, SimilarMovieContract.Presenter> implements SimilarMovieContract.View {
     public static final String ARG_MOVIE_ID = "Arg:Fragment:Movie:Reviews";
 
     private Integer mMovieId;
@@ -67,7 +68,7 @@ public class SimilarMovieFragment extends RecyclerViewFragment<SimilarMovieContr
     }
 
     @Override
-    protected void onLoadData() {
+    protected void loadData() {
         mPresenter.getSimilarMovies(mMovieId);
     }
 
