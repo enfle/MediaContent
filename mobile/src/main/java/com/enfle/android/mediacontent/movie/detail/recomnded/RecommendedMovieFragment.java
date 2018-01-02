@@ -7,13 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.enfle.android.mediacontent.base.adapter.RecyclerItemView;
-import com.enfle.android.mediacontent.base.fragments.DaggerFragment;
 import com.enfle.android.mediacontent.base.fragments.DaggerRecyclerViewFragment;
 import com.enfle.android.mediacontent.base.fragments.LayoutManagerType;
-import com.enfle.android.mediacontent.base.fragments.RecyclerViewFragment;
 import com.enfle.android.mediacontent.beans.Movie;
 import com.enfle.android.mediacontent.movie.detail.MovieDetailActivity;
-import com.enfle.android.mediacontent.movie.list.MovieGridViewItem;
+import com.enfle.android.mediacontent.movie.detail.MovieGridViewItem;
 
 import org.parceler.Parcels;
 
