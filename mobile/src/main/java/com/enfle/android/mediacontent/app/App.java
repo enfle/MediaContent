@@ -3,11 +3,15 @@ package com.enfle.android.mediacontent.app;
 import android.app.Activity;
 import android.app.Application;
 
+import com.enfle.android.mediacontent.BuildConfig;
+import com.enfle.android.mediacontent.utils.CrashlyticsTree;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
+import timber.log.Timber;
 
 /**
  * Created by : Subham Tyagi
@@ -28,17 +32,11 @@ public class App extends Application implements HasActivityInjector {
     }
 
     private void extera() {
-        //
-//        CrashlyticsCore core = new CrashlyticsCore.Builder()
-//                .disabled(BuildConfig.DEBUG)
-//                .build();
-//        FlurryAgent.setLogEnabled(false);
-//        FlurryAgent.init(this, "5CRSYGMX6ZVP56538W8J");
-//        Fabric.with(this, new Crashlytics.Builder().core(core).build(), new Answers());
-//        if (BuildConfig.DEBUG) {
-//            Timber.plant(new Timber.DebugTree());
-//        }
-//        //Timber.plant(new CrashlyticsTree());
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        } else {
+            Timber.plant(new CrashlyticsTree());
+        }
     }
 
     @Override

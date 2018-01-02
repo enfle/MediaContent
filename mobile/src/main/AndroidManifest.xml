@@ -25,10 +25,6 @@
             android:label="@string/title_activity_movie_detail"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="156c45db84f959fff0626bd3c7ff7354bbd0c94b" />
-
     </application>
 
 </manifest>
