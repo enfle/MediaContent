@@ -6,7 +6,6 @@ import com.enfle.android.mediacontent.movie.detail.overview.OverviewFragmentModu
 import com.enfle.android.mediacontent.movie.detail.reviews.ReviewFragment;
 import com.enfle.android.mediacontent.movie.detail.reviews.ReviewFragmentModule;
 import com.enfle.android.mediacontent.movie.detail.video.VideoFragment;
-import com.enfle.android.mediacontent.movie.detail.video.VideoFragmentModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -25,8 +24,4 @@ public abstract class MovieDetailActivityModule {
     @PerFragment
     @ContributesAndroidInjector(modules = {ReviewFragmentModule.class})
     abstract public ReviewFragment reviewFragment();
-
-    @PerFragment
-    @ContributesAndroidInjector(modules = {VideoFragmentModule.class})
-    abstract public VideoFragment videoFragment();
 }
