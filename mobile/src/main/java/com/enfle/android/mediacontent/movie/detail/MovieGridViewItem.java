@@ -1,4 +1,4 @@
-package com.enfle.android.mediacontent.movie.list;
+package com.enfle.android.mediacontent.movie.detail;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

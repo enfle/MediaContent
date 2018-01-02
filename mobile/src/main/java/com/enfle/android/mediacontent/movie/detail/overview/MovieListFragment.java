@@ -11,7 +11,7 @@ import com.enfle.android.mediacontent.base.fragments.LayoutManagerType;
 import com.enfle.android.mediacontent.base.fragments.RecyclerViewFragment;
 import com.enfle.android.mediacontent.beans.Movie;
 import com.enfle.android.mediacontent.movie.detail.MovieDetailActivity;
-import com.enfle.android.mediacontent.movie.list.MovieGridViewItem;
+import com.enfle.android.mediacontent.movie.detail.MovieGridViewItem;
 
 import org.parceler.Parcels;
 

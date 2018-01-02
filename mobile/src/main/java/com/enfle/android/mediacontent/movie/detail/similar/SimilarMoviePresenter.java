@@ -4,7 +4,7 @@ import com.enfle.android.mediacontent.base.adapter.RecyclerItemView;
 import com.enfle.android.mediacontent.beans.Movie;
 import com.enfle.android.mediacontent.beans.MovieListResponseDto;
 import com.enfle.android.mediacontent.cache.DataCache;
-import com.enfle.android.mediacontent.movie.list.MovieGridViewItem;
+import com.enfle.android.mediacontent.movie.detail.MovieGridViewItem;
 import com.enfle.android.mediacontent.mvp.BaseNetworkPresenter;
 import com.enfle.android.mediacontent.service.MovieService;
 import com.enfle.android.mediacontent.utils.CollectionUtils;
