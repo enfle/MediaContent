@@ -14,10 +14,10 @@ public class Images {
 
     @SerializedName("backdrops")
     @Expose
-    List<Backdrop> backdrops = new ArrayList<Backdrop>();
+    List<Backdrop> backdrops = new ArrayList<>();
     @SerializedName("posters")
     @Expose
-    List<Poster> posters = new ArrayList<Poster>();
+    List<Poster> posters = new ArrayList<>();
 
     /**
      * @return The backdrops

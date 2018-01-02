@@ -7,9 +7,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.enfle.android.mediacontent.R;
+import com.enfle.android.mediacontent.beans.MovieDetailDto;
+import com.enfle.android.mediacontent.cast.CastFragment;
 import com.enfle.android.mediacontent.movie.detail.overview.MovieOverviewFragment;
 import com.enfle.android.mediacontent.movie.detail.reviews.ReviewFragment;
 import com.enfle.android.mediacontent.movie.detail.video.VideoFragment;
+
+import org.parceler.Parcels;
 
 /**
  * Created by : Subham Tyagi
@@ -20,15 +24,15 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     private final Context mContext;
 
-    private Integer movieId;
+    private MovieDetailDto mMovieDetailDto;
 
     MovieDetailFragmentPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
 
-    public void setMovieId(Integer movieId) {
-        this.movieId = movieId;
+    public void setMovieDetailDto(MovieDetailDto movieDetailDto) {
+        mMovieDetailDto = movieDetailDto;
     }
 
     @Override
@@ -37,15 +41,24 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         switch (position) {
             case 0:
-                bundle.putInt(MovieOverviewFragment.ARG_MOVIE_ID, movieId);
+                bundle.putInt(MovieOverviewFragment.ARG_MOVIE_ID, mMovieDetailDto.getId());
                 fragment = new MovieOverviewFragment();
                 break;
             case 1:
-                bundle.putInt(VideoFragment.ARG_MOVIE_ID, movieId);
+                bundle.putParcelable(VideoFragment.ARG_MOVIE_VIDEOS, Parcels.wrap(mMovieDetailDto.getVideos()));
+                bundle.putParcelable(VideoFragment.ARG_MOVIE_IMAGES, Parcels.wrap(mMovieDetailDto.getImages()));
                 fragment = new VideoFragment();
                 break;
             case 2:
-                bundle.putInt(ReviewFragment.ARG_MOVIE_ID, movieId);
+                bundle.putInt(ReviewFragment.ARG_MOVIE_ID, mMovieDetailDto.getId());
+                fragment = new ReviewFragment();
+                break;
+            case 3:
+                bundle.putParcelable(CastFragment.ARG_MOVIE_CAST, Parcels.wrap(mMovieDetailDto.getCredits().getCast()));
+                fragment = new CastFragment();
+                break;
+            case 4:
+                bundle.putInt(ReviewFragment.ARG_MOVIE_ID, mMovieDetailDto.getId());
                 fragment = new ReviewFragment();
                 break;
             default:
@@ -57,10 +70,7 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-//        if (mMovieDetailDto == null) {
-//            return 0;
-//        }
-        return 3;
+        return 5;
     }
 
     @Override
@@ -72,9 +82,12 @@ public class MovieDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
                 return mContext.getString(R.string.video);
             case 2:
                 return mContext.getString(R.string.reviews);
+            case 3:
+                return mContext.getString(R.string.cast);
+            case 4:
+                return mContext.getString(R.string.crew);
             default:
                 throw new IllegalArgumentException("Invalid position");
         }
     }
-
 }

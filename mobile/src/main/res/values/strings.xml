@@ -30,4 +30,6 @@
     <string name="backdrop">Backdrop</string>
     <string name="video_poster">Video Poster</string>
     <string name="video_indicator">Video Indicator</string>
+    <string name="cast">Cast</string>
+    <string name="crew">crew</string>
 </resources>
