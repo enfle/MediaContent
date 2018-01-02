@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.enfle.android.mediacontent.R;
 import com.enfle.android.mediacontent.base.activity.DaggerActivity;
@@ -29,6 +31,9 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @BindView(R.id.title)
+    TextView mTitleTextView;
+
     @BindView(R.id.tablayout)
     TabLayout mTablayout;
 
@@ -39,17 +44,18 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
     MovieDetailContract.Presenter mPresenter;
 
     private Movie mMovie;
+    private MovieDetailDto mMovieDetailDto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_detail_activity);
         ButterKnife.bind(this);
+
         mMovie = Parcels.unwrap(getIntent().getParcelableExtra(ARG_MOVIE));
-        MovieDetailFragmentPagerAdapter adapter = new MovieDetailFragmentPagerAdapter(this, getSupportFragmentManager());
-        adapter.setMovieId(mMovie.getId());
         mTablayout.setupWithViewPager(mViewPager, true);
-        mViewPager.setAdapter(adapter);
+
+        mTitleTextView.setText(mMovie.getTitle());
         String imagePath = mMovie.getBackdropPath();
         Picasso.with(mBackdrop.getContext())
                 .load("http://image.tmdb.org/t/p/w500" + imagePath)
@@ -96,14 +102,16 @@ public class MovieDetailActivity extends DaggerActivity implements MovieDetailCo
         if (mMovie == null) {
             return;
         }
-        // mPresenter.getMovieDetail(mMovie.getId());
+        mPresenter.getMovieDetail(mMovie.getId());
     }
 
     @Override
     public void onMovieDetailReceived(MovieDetailDto movieDetailDto) {
-//        mMovieDetailDto = movieDetailDto;
-//        mAdapter.setMovieDetailDto(mMovieDetailDto);
-//        mViewPager.setAdapter(mAdapter);
+        Log.d("shubham", "Received");
+        mMovieDetailDto = movieDetailDto;
+        MovieDetailFragmentPagerAdapter adapter = new MovieDetailFragmentPagerAdapter(this, getSupportFragmentManager());
+        adapter.setMovieDetailDto(mMovieDetailDto);
+        mViewPager.setAdapter(adapter);
     }
 
     @Override
