@@ -45,7 +45,7 @@ public class MovieDetailPresenter extends BaseNetworkPresenter<MovieDetailContra
 
     @Override
     protected Observable<?> getApiObservable(String tag) {
-        return mMovieService.getMovieDetail(mMovieId, "videos,reviews,images");
+        return mMovieService.getMovieDetail(mMovieId, "videos,reviews,images,credits");
     }
 
     @Override
